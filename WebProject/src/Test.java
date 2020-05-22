@@ -32,6 +32,7 @@ public class Test extends HttpServlet {
 		kouhuku = kouhuku * 2;
 		kouhuku = 0;
 		kouhuku = 100;
+		kouhuku = 200;
 		response.getWriter().append("Served at: ").append(request.getContextPath());
 	}
 
