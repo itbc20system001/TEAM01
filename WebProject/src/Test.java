@@ -30,6 +30,7 @@ public class Test extends HttpServlet {
 		// TODO Auto-generated method stub
 		int kouhuku = 10000;
 		kouhuku = kouhuku * 2;
+		kouhuku = 0;
 		response.getWriter().append("Served at: ").append(request.getContextPath());
 	}
 
