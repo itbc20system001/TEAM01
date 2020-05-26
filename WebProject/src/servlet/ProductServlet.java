@@ -8,6 +8,9 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
+import javabeans.HappyLife;
 
 /**
  * Servlet implementation class ProductServlet
@@ -29,6 +32,12 @@ public class ProductServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
+
+
+//		HttpSession session = request.getSession();
+//		HappyLife happyLife = new HappyLife();
+//		session.setAttribute("happy", happyLife);
+
 		request.setCharacterEncoding("UTF-8");
 		RequestDispatcher dispatcher =request.getRequestDispatcher("kakushouhin.jsp");
 		dispatcher.forward(request, response);
@@ -40,7 +49,21 @@ public class ProductServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		doGet(request, response);
+
+		request.setCharacterEncoding("UTF-8");
+		String name=request.getParameter("購入");
+		System.out.println(name);
+		String path="";
+		HttpSession session = request.getSession();
+		HappyLife happyLife =(HappyLife)session.getAttribute("happy");
+
+		if(name.equals("商品1を購入")) {
+			path="shouhin1.jsp";
+			happyLife.setProductid(1);
+		}
+		//RequestDispatcher dispatcher =request.getRequestDispatcher(path);
+		//dispatcher.forward(request, response);
+		response.sendRedirect(path);
 	}
 
 }
