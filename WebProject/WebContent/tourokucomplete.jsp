@@ -8,7 +8,7 @@
 <title>登録完了</title>
 </head>
 <body>
-<p>幸福ポイントが150KP付与されました。</p>
+<p>幸福ポイントが200KP付与されました。</p>
 <p><a href="top.jsp">TOP画面へ</a></p>
 </body>
 </html>
