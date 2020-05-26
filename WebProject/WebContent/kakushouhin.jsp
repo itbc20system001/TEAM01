@@ -24,5 +24,7 @@
 </tr>
 
 </table>
+
+<a href="CartServlet">カートへ</a>
 </body>
 </html>
