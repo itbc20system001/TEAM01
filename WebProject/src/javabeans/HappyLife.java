@@ -1,11 +1,12 @@
 package javabeans;
 
 import java.io.Serializable;
-import java.util.Date;
+import java.sql.Date;
+
 
 public class HappyLife implements Serializable {
 
-	private int happypoint;//KP
+	private int happypoint;//KP!
 	private int price;//値段
 	private int productid;//p_idを入れる予定
 	private String usrName;//ユーザーネーム
