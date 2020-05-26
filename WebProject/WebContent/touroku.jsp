@@ -21,9 +21,6 @@ Eメールアドレス：<input type="text" name="email"><br>
 パスワード：<input type="text" name="password"><br>
 <input type="submit" value ="送信">
 
-
-
-
 </form>
 
 </body>
