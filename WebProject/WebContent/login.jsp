@@ -7,7 +7,7 @@
 <title>ログイン</title>
 </head>
 <body>
-<form action="/kohukudo/kakusyouhin" method="post">
+<form action="LoginServlet" method="post">
 メールアドレス:<input type="text" name="email"><br>
 パスワード:<input type="password" name="pass"><br>
 <input type="submit" value="ログイン">
