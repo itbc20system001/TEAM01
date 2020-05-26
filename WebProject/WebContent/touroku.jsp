@@ -7,7 +7,7 @@
 <title>新規会員登録</title>
 </head>
 <body>
-<form="/WebProject/Servlet/RegisterServlet" method="get">
+<form action ="RegisterServlet" method="post">
 利用者名（氏）：<input type="text" name="l_name"><br>
 利用者名（名）：<input type="text" name="f_name"><br>
 利用者名（氏カナ）：<input type="text" name="l_name_kana"><br>
@@ -20,7 +20,6 @@ Eメールアドレス：<input type="text" name="email"><br>
 生年月日：<input type="text" name="birthday"><br>
 パスワード：<input type="text" name="password"><br>
 <input type="submit" value ="送信">
-
 </form>
 
 </body>
