@@ -1,6 +1,8 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-    <%int count=0; %>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page import="javabeans.HappyLife"%>
+<%
+	HappyLife happyLife = (HappyLife) session.getAttribute("happy");
+%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -8,27 +10,33 @@
 <title>商品1</title>
 </head>
 <body>
-<table>
-<th>商品1<br>100KP</th>
-<tr>
-<td><img src="image/kari.gif" width="300" height="300" alt="shouhin1"><td>
-<td>商品1です。あなたに幸福とかあるでしょう。</td>
-<tr>
+  <table>
+    <th>商品1<br>100KP
+    </th>
+    <tr>
+      <td><img src="image/kari.gif" width="300" height="300" alt="shouhin1">
+      <td>
+      <td>商品1です。あなたに幸福とかあるでしょう。</td>
+    <tr>
+  </table>
 
-</table>
-<form>
-<input type="button" value="購入" onclick="cartIn()">
-<input type="button" value="確認" onclick="kari()">
-</form>
+  <%
+  	if (happyLife.getProductid() == 0) {
+  %>
+  <form action="Product" method="POST">
+    <input type="submit" value="商品1を購入" name="購入" onclick="cartIn()">
+  </form>
+  <%
+  	} else {
+  %>
+  カートに入っています
+  <%
+  	}
+  %>
 </body>
 <script>
-var count=0;
-var cartIn = function a() {
-  alert('カートに追加しました');
-  count++;
-}
-var kari = function b() {
-  alert(count);
-}
+  var cartIn = function a() {
+    alert('カートに追加しました');
+  }
 </script>
 </html>
