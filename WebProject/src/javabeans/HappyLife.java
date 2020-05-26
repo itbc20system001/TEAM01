@@ -1,20 +1,18 @@
 package javabeans;
 
-import java.io.Serializable;
+public class HappyLife {
 
-public class HappyLife implements Serializable {
-
-	private int happypoint;//KP
+	private int happyPoint;//KP
 	private int price;//値段
-	private int productid;//p_idを入れる予定
+	private int productId;//p_idを入れる予定
 	private String usrName;//ユーザーネーム
 
-	public int getHappypoint() {
-		return happypoint;
+	public int getHappyPoint() {
+		return happyPoint;
 	}
 
-	public void setHappypoint(int happypoint) {
-		this.happypoint = happypoint;
+	public void setHappyPoint(int happyPoint) {
+		this.happyPoint = happyPoint;
 	}
 
 	public int getPrice() {
@@ -25,12 +23,12 @@ public class HappyLife implements Serializable {
 		this.price = price;
 	}
 
-	public int getProductid() {
-		return productid;
+	public int getProductId() {
+		return productId;
 	}
 
-	public void setProductid(int productid) {
-		this.productid = productid;
+	public void setProductId(int productId) {
+		this.productId = productId;
 	}
 
 	public String getUsrName() {
@@ -40,4 +38,5 @@ public class HappyLife implements Serializable {
 	public void setUsrName(String usrName) {
 		this.usrName = usrName;
 	}
+
 }
