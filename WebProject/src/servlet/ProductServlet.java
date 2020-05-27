@@ -13,7 +13,6 @@ import javax.servlet.http.HttpSession;
 
 import javabeans.HappyLife;
 import javabeans.Product;
-import model.ProductListLogic;
 
 /**
  * Servlet implementation class ProductServlet
@@ -41,6 +40,7 @@ public class ProductServlet extends HttpServlet {
 		//		HappyLife happyLife = new HappyLife();
 		//		session.setAttribute("happy", happyLife);
 
+
 		request.setCharacterEncoding("UTF-8");
 		RequestDispatcher dispatcher =request.getRequestDispatcher("kakushouhin.jsp");
 		dispatcher.forward(request, response);
@@ -59,9 +59,8 @@ public class ProductServlet extends HttpServlet {
 		String path="";
 		HttpSession session = request.getSession();
 		HappyLife happyLife =(HappyLife)session.getAttribute("happy");
-		ArrayList<Product> productList = new ArrayList<Product>();
-		ProductListLogic productListLogic = new ProductListLogic();
-		productList = productListLogic.execute(productList);
+		ArrayList<Product> productList = (ArrayList<Product>)session.getAttribute("product");
+
 		if(name.equals("商品1を購入")) {
 			path="shouhin1.jsp";
 			happyLife.setProductid(1);
