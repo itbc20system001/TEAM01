@@ -9,6 +9,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import javabeans.Register;
+
 
 
 @WebServlet("/RegisterServlet")
@@ -28,20 +30,25 @@ public class RegisterServlet extends HttpServlet {
 			throws ServletException, IOException {
 		//リクエストパラメータの取得
 		request.setCharacterEncoding("UTF-8");
-		String l_name = request.getParameter("l_name");
-		String f_name = request.getParameter("f_name");
-		String l_name_kana = request.getParameter("l_name_kana");
-		String f_name_kana = request.getParameter("f_name_kana");
-		String prefecture = request.getParameter("prefecture");
-		String city = request.getParameter("city");
-		String o_address = request.getParameter("o_address");
-		String tel = request.getParameter("tel");
-		String email = request.getParameter("email");
-		String birthday = request.getParameter("birthday");
-		String password = request.getParameter("password");
+		Register reg = new Register();
+		reg.setL_name(request.getParameter("l_name"));
+		reg.setF_name (request.getParameter("f_name"));
+		reg.setL_name_kana (request.getParameter("l_name_kana"));
+		reg.setF_name_kana (request.getParameter("f_name_kana"));
+		reg.setPrefecture (request.getParameter("prefecture"));
+		reg.setCity (request.getParameter("city"));
+		reg.setO_address(request.getParameter("o_address"));
+		reg.setTel(request.getParameter("tel"));
+		reg.setEmail(request.getParameter("email"));
+		reg.setBirthday (request.getParameter("birthday"));
+		reg.setPassword (request.getParameter("password"));
 
-		//リクエストパラメータをチェック
-		if(l_name == null || l_name.length()==0) {
+
+
+
+
+
+		/*if(l_name == null || l_name.length()==0) {
 			request.setCharacterEncoding("UTF-8");
 			RequestDispatcher dispatcher =request.getRequestDispatcher("touroku_error.jsp");
 			dispatcher.forward(request, response);
@@ -94,7 +101,7 @@ public class RegisterServlet extends HttpServlet {
 			request.setCharacterEncoding("UTF-8");
 			RequestDispatcher dispatcher =request.getRequestDispatcher("tourokucomplete.jsp");
 			dispatcher.forward(request, response);
-		}
+		}*/
 
 	}
 }
