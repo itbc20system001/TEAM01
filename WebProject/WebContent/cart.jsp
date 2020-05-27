@@ -1,5 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    <%@page import ="javabeans.*" %>
+    <%@page import ="java.util.ArrayList" %>
+    <%HappyLife happyLife =(HappyLife)session.getAttribute("happy"); %>
+    <%ArrayList<Product> productList = (ArrayList<Product>)session.getAttribute("product");
+ %>
 <!DOCTYPE html>
 <html>
 <head>

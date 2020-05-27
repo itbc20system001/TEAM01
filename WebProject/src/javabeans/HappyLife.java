@@ -2,13 +2,17 @@ package javabeans;
 
 import java.io.Serializable;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 
 
 public class HappyLife implements Serializable {
 
 	private int happypoint;//KP!
 	private int price;//値段
+
 	private int productid;//p_idを入れる予定
+	private ArrayList<Product> p_Buy_List = new ArrayList<Product>();
+
 	private String usrName;//ユーザーネーム
 	private int po_id;//注文番号
 	private int userid;//ユーザーID
@@ -80,5 +84,14 @@ public class HappyLife implements Serializable {
 
 	public void setUsrName(String usrName) {
 		this.usrName = usrName;
+	}
+
+
+	public ArrayList<Product> getP_Buy_List() {
+		return p_Buy_List;
+	}
+
+	public void setP_Buy_List(ArrayList<Product> p_Buy_List) {
+		this.p_Buy_List = p_Buy_List;
 	}
 }
