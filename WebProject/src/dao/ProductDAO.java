@@ -16,9 +16,16 @@ public class ProductDAO {
 
 	public ArrayList<Product> loadingProduct() {
 		ArrayList<Product> productList = new ArrayList<>();
+		try {
+			Class.forName("org.mariadb.jdbc.Driver");
+		} catch (ClassNotFoundException e1) {
+			// TODO 自動生成された catch ブロック
+			e1.printStackTrace();
+		}
+
 		try(Connection conn = DriverManager.getConnection(JDBC_URL,DB_USER,DB_PASS)) {
 
-			String sql = "SELECT p_id,p_name,price FROM product ORDER BY DESC";
+			String sql = "SELECT * FROM product";
 			PreparedStatement pStmt = conn.prepareStatement(sql);
 			ResultSet rs =  pStmt.executeQuery();
 
@@ -29,12 +36,6 @@ public class ProductDAO {
 				Product product =new Product(p_id,p_name,price);
 				productList.add(product);
 			}
-			/*pStmt.setInt(1, happylife.getProductid());
-					pStmt.setInt(2, happylife.getUserid());
-					pStmt.setDate(3, happylife.getOrderDate());//注文確定ボタンを押したときの時間をorderdateに代入
-					pStmt.setDate(4, happylife.getLimitDate());//その後24時間後を足す
-			 */
-
 
 		}catch (Exception e) {
 			e.printStackTrace();
