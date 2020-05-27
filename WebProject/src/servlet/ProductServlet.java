@@ -61,12 +61,15 @@ public class ProductServlet extends HttpServlet {
 		HappyLife happyLife =(HappyLife)session.getAttribute("happy");
 		ArrayList<Product> productList = (ArrayList<Product>)session.getAttribute("product");
 
+		ArrayList<Product> p_Buy_List = happyLife.getP_Buy_List();
 		if(name.equals("商品1を購入")) {
 			path="shouhin1.jsp";
-			happyLife.setProductid(1);
-			System.out.println(productList.get(0).getP_id());
-			System.out.println(productList.get(0).getP_name());
-			System.out.println(productList.get(0).getPrice());
+			p_Buy_List.add(productList.get(0));
+			happyLife.setP_Buy_List(p_Buy_List);
+
+			System.out.println(p_Buy_List.get(0).getP_id());
+			System.out.println(p_Buy_List.get(0).getP_name());
+			System.out.println(p_Buy_List.get(0).getPrice());
 		}
 		//RequestDispatcher dispatcher =request.getRequestDispatcher(path);
 		//dispatcher.forward(request, response);

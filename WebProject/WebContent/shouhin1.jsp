@@ -1,7 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@ page import="javabeans.HappyLife"%>
-<%
-	HappyLife happyLife = (HappyLife) session.getAttribute("happy");
+<%@page import="javabeans.*"%>
+<%@page import="java.util.ArrayList"%>
+<%HappyLife happyLife =(HappyLife)session.getAttribute("happy"); %>
+<%ArrayList<Product> productList = (ArrayList<Product>)session.getAttribute("product");
+
 %>
 <!DOCTYPE html>
 <html>
@@ -21,7 +23,7 @@
   </table>
 
   <%
-  	if (happyLife.getProductid() == 0) {
+  	if (!happyLife.getP_Buy_List().contains(productList.get(0))) {
   %>
   <form action="Product" method="POST">
     <input type="submit" value="商品1を購入" name="購入" onclick="cartIn()">
