@@ -6,9 +6,9 @@ import dao.ProductDAO;
 import javabeans.Product;
 
 public class ProductListLogic {
-	public ArrayList<Product> dao(ArrayList<Product> ar){
+	public ArrayList<Product> execute(ArrayList<Product> productList){
 		ProductDAO dao =new ProductDAO();
-		dao.loadingProduct();
-		return null;
+		productList = dao.loadingProduct();
+		return productList;
 	}
 }

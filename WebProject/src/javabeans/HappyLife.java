@@ -1,8 +1,7 @@
 package javabeans;
 
 import java.io.Serializable;
-import java.sql.Date;
-import java.util.ArrayList;
+import java.time.LocalDateTime;
 
 
 public class HappyLife implements Serializable {
@@ -10,12 +9,11 @@ public class HappyLife implements Serializable {
 	private int happypoint;//KP!
 	private int price;//値段
 	private int productid;//p_idを入れる予定
-	private ArrayList<Integer> p_id_list= new ArrayList<Integer>();//p_idのリスト
 	private String usrName;//ユーザーネーム
 	private int po_id;//注文番号
 	private int userid;//ユーザーID
-	private Date orderDate;//注文時間
-	private Date limitDate;//有効期限
+	private LocalDateTime orderDate;//注文時間
+	private LocalDateTime limitDate;//有効期限
 	private String email;//eメールアドレス
 	private String password;//パスワード
 
@@ -40,19 +38,20 @@ public class HappyLife implements Serializable {
 		this.userid = userid;
 	}
 
-	public Date getOrderDate() {
+
+	public LocalDateTime getOrderDate() {
 		return orderDate;
 	}
 
-	public void setOrderDate(Date orderDate) {
+	public void setOrderDate(LocalDateTime orderDate) {
 		this.orderDate = orderDate;
 	}
 
-	public Date getLimitDate() {
+	public LocalDateTime getLimitDate() {
 		return limitDate;
 	}
 
-	public void setLimitDate(Date limitDate) {
+	public void setLimitDate(LocalDateTime limitDate) {
 		this.limitDate = limitDate;
 	}
 
@@ -102,13 +101,5 @@ public class HappyLife implements Serializable {
 
 	public void setUsrName(String usrName) {
 		this.usrName = usrName;
-	}
-
-	public ArrayList<Integer> getP_id_list() {
-		return p_id_list;
-	}
-
-	public void setP_id_list(ArrayList<Integer> p_id_list) {
-		this.p_id_list = p_id_list;
 	}
 }

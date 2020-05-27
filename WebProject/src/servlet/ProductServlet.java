@@ -1,6 +1,7 @@
 package servlet;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -11,6 +12,8 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import javabeans.HappyLife;
+import javabeans.Product;
+import model.ProductListLogic;
 
 /**
  * Servlet implementation class ProductServlet
@@ -19,13 +22,13 @@ import javabeans.HappyLife;
 public class ProductServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
-    public ProductServlet() {
-        super();
-        // TODO Auto-generated constructor stub
-    }
+	/**
+	 * @see HttpServlet#HttpServlet()
+	 */
+	public ProductServlet() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
 
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
@@ -34,9 +37,9 @@ public class ProductServlet extends HttpServlet {
 		// TODO Auto-generated method stub
 
 
-//		HttpSession session = request.getSession();
-//		HappyLife happyLife = new HappyLife();
-//		session.setAttribute("happy", happyLife);
+		//		HttpSession session = request.getSession();
+		//		HappyLife happyLife = new HappyLife();
+		//		session.setAttribute("happy", happyLife);
 
 		request.setCharacterEncoding("UTF-8");
 		RequestDispatcher dispatcher =request.getRequestDispatcher("kakushouhin.jsp");
@@ -56,10 +59,15 @@ public class ProductServlet extends HttpServlet {
 		String path="";
 		HttpSession session = request.getSession();
 		HappyLife happyLife =(HappyLife)session.getAttribute("happy");
-
+		ArrayList<Product> productList = new ArrayList<Product>();
+		ProductListLogic productListLogic = new ProductListLogic();
+		productList = productListLogic.execute(productList);
 		if(name.equals("商品1を購入")) {
 			path="shouhin1.jsp";
-			//happyLife.setP_id_list.add(1);
+			happyLife.setProductid(1);
+			System.out.println(productList.get(0).getP_id());
+			System.out.println(productList.get(0).getP_name());
+			System.out.println(productList.get(0).getPrice());
 		}
 		//RequestDispatcher dispatcher =request.getRequestDispatcher(path);
 		//dispatcher.forward(request, response);

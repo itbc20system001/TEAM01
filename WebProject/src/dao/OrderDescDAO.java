@@ -16,7 +16,7 @@ public class OrderDescDAO {
 	public OrderDescDAO() {
 		// TODO 自動生成されたコンストラクター・スタブ
 		try {
-			Class.forName("");//未定
+			Class.forName("org.mariadb.jdbc.Driver");//仮
 		} catch (ClassNotFoundException e1) {
 			e1.printStackTrace();
 		}
@@ -33,7 +33,7 @@ public class OrderDescDAO {
 
 			//INSERT文中の「？」に使用する値を設定しSQLを完成
 			pStmt.setInt(1, happylife.getPo_id());//po_idの取得と設定。
-			pStmt.setInt(2, happylife.getProductid());//p_idの取得と設定。未確定
+			pStmt.setInt(2, happylife.getProductid());//p_idの取得と設定。
 
 			//INSERT文の実行
 			int result = pStmt.executeUpdate();
