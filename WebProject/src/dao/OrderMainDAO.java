@@ -12,7 +12,7 @@ public class OrderMainDAO {
 			private final String DB_USER = "root";
 			private final String DB_PASS = "insource.2015it";
 
-			public boolean creat(HappyLife happylife) {
+			public boolean create(HappyLife happylife) {
 				try(Connection conn = DriverManager.getConnection(JDBC_URL,DB_USER,DB_PASS)) {
 
 					String sql = "INSERT INTO order_main(NAME, TEXT) VALUES (?,?,?,?)";
@@ -20,8 +20,8 @@ public class OrderMainDAO {
 
 					pStmt.setInt(1, happylife.getProductid());
 					pStmt.setInt(2, happylife.getUserid());
-					pStmt.setDate(3, happylife.getOrderDate());//注文確定ボタンを押したときの時間をorderdateに代入
-					pStmt.setDate(4, happylife.getLimitDate());//その後24時間後を足す
+			//		pStmt.setDate(3, happylife.getOrderDate());//注文確定ボタンを押したときの時間をorderdateに代入
+			//		pStmt.setDate(4, happylife.getLimitDate());//その後24時間後を足す
 
 					int result = pStmt.executeUpdate();
 					if(result != 1) {
