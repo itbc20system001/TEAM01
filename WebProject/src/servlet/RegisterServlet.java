@@ -10,8 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import javabeans.Register;
-
-
+import model.RegisterLogic;
 
 @WebServlet("/RegisterServlet")
 public class RegisterServlet extends HttpServlet {
@@ -19,91 +18,48 @@ public class RegisterServlet extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+
+		//"touroku.jsp"へフォワード処理
 		request.setCharacterEncoding("UTF-8");
-		RequestDispatcher dispatcher =request.getRequestDispatcher("touroku.jsp");
+		RequestDispatcher dispatcher = request.getRequestDispatcher("touroku.jsp");
 		dispatcher.forward(request, response);
 
 	}
 
-
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		//リクエストパラメータの取得
+
 		request.setCharacterEncoding("UTF-8");
+
+		//ユーザー登録情報をRegisterにセット
 		Register reg = new Register();
 		reg.setL_name(request.getParameter("l_name"));
-		reg.setF_name (request.getParameter("f_name"));
-		reg.setL_name_kana (request.getParameter("l_name_kana"));
-		reg.setF_name_kana (request.getParameter("f_name_kana"));
-		reg.setPrefecture (request.getParameter("prefecture"));
-		reg.setCity (request.getParameter("city"));
+		reg.setF_name(request.getParameter("f_name"));
+		reg.setL_name_kana(request.getParameter("l_name_kana"));
+		reg.setF_name_kana(request.getParameter("f_name_kana"));
+		reg.setPrefecture(request.getParameter("prefecture"));
+		reg.setCity(request.getParameter("city"));
 		reg.setO_address(request.getParameter("o_address"));
 		reg.setTel(request.getParameter("tel"));
 		reg.setEmail(request.getParameter("email"));
-		reg.setBirthday (request.getParameter("birthday"));
-		reg.setPassword (request.getParameter("password"));
+		reg.setBirthday(request.getParameter("birthday"));
+		reg.setPassword(request.getParameter("password"));
 
+		//ログイン処理
+		RegisterLogic bo = new RegisterLogic();
+		boolean dbResult = bo.dbExcute(reg);//DB上の成否
+		boolean inputResult = bo.inputExcute(reg);//jspでのユーザー側の入力の不備
 
-
-
-
-
-		/*if(l_name == null || l_name.length()==0) {
+		//ログイン処理の成否によって条件を分岐
+		if (dbResult && inputResult) { //成功時
 			request.setCharacterEncoding("UTF-8");
-			RequestDispatcher dispatcher =request.getRequestDispatcher("touroku_error.jsp");
+			RequestDispatcher dispatcher = request.getRequestDispatcher("tourokucomplete.jsp");
 			dispatcher.forward(request, response);
-		}else if(f_name == null ||  f_name.length() == 0) {
+		} else { //失敗時
 			request.setCharacterEncoding("UTF-8");
-			RequestDispatcher dispatcher =request.getRequestDispatcher("touroku_error.jsp");
+			RequestDispatcher dispatcher = request.getRequestDispatcher("touroku_error.jsp");
 			dispatcher.forward(request, response);
-		}else if(f_name == null ||  f_name.length() == 0) {
-			request.setCharacterEncoding("UTF-8");
-			RequestDispatcher dispatcher =request.getRequestDispatcher("touroku_error.jsp");
-			dispatcher.forward(request, response);
-		}else if(l_name_kana == null ||  l_name_kana.length() == 0) {
-			request.setCharacterEncoding("UTF-8");
-			RequestDispatcher dispatcher =request.getRequestDispatcher("touroku_error.jsp");
-			dispatcher.forward(request, response);
-		}else if(f_name_kana == null ||  f_name.length() == 0) {
-			request.setCharacterEncoding("UTF-8");
-			RequestDispatcher dispatcher =request.getRequestDispatcher("touroku_error.jsp");
-			dispatcher.forward(request, response);
-		}else if(prefecture == null ||  prefecture.length() == 0) {
-			request.setCharacterEncoding("UTF-8");
-			RequestDispatcher dispatcher =request.getRequestDispatcher("touroku_error.jsp");
-			dispatcher.forward(request, response);
-		}else if(city == null ||  city.length() == 0) {
-			request.setCharacterEncoding("UTF-8");
-			RequestDispatcher dispatcher =request.getRequestDispatcher("touroku_error.jsp");
-			dispatcher.forward(request, response);
-		}else if(o_address == null ||  o_address.length() == 0) {
-			request.setCharacterEncoding("UTF-8");
-			RequestDispatcher dispatcher =request.getRequestDispatcher("touroku_error.jsp");
-			dispatcher.forward(request, response);
-		}else if(tel == null ||  tel.length() == 0) {
-			request.setCharacterEncoding("UTF-8");
-			RequestDispatcher dispatcher =request.getRequestDispatcher("touroku_error.jsp");
-			dispatcher.forward(request, response);
-		}else if(email== null ||  email.length() == 0) {
-			request.setCharacterEncoding("UTF-8");
-			RequestDispatcher dispatcher =request.getRequestDispatcher("touroku_error.jsp");
-			dispatcher.forward(request, response);
-		}else if(birthday == null ||  birthday.length() == 0) {
-			request.setCharacterEncoding("UTF-8");
-			RequestDispatcher dispatcher =request.getRequestDispatcher("touroku_error.jsp");
-			dispatcher.forward(request, response);
-		}else if( password == null ||  password.length() == 0){
-			request.setCharacterEncoding("UTF-8");
-			RequestDispatcher dispatcher =request.getRequestDispatcher("touroku_error.jsp");
-			dispatcher.forward(request, response);
-
-		}else {
-			request.setCharacterEncoding("UTF-8");
-			RequestDispatcher dispatcher =request.getRequestDispatcher("tourokucomplete.jsp");
-			dispatcher.forward(request, response);
-		}*/
+		}
 
 	}
 }
-
-
