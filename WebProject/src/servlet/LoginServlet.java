@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import javabeans.HappyLife;
+import javabeans.Login;
 
 /**
  * Servlet implementation class LoginServlet
@@ -23,10 +24,11 @@ public class LoginServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-
-/*		request.setCharacterEncoding("UTF-8");
-		String email = request.getParameter("email");
-		String pass = request.getParameter("pass");
+		request.setCharacterEncoding("UTF-8");
+		Login login = new Login();
+		login.setEmail(request.getParameter("email"));
+		login.setPass(request.getParameter("pass"));
+/*		
 
 		User user = new User(email,pass);
 
