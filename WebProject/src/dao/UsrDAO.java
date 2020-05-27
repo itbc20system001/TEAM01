@@ -92,6 +92,39 @@ public class UsrDAO {
 		}
 		return true;
 	}
+	public boolean create2(HappyLife happylife) {
+
+		try {
+			Class.forName("org.mariadb.jdbc.Driver");
+		} catch (ClassNotFoundException e1) {
+			e1.printStackTrace();
+		}
+		//データベース接続
+		try (Connection conn = DriverManager.getConnection(
+				JDBC_URL, DB_USER, DB_PASS)) {
+
+			//INSERT文の準備
+			String sql =
+					"INSERT INTO USR(HAPPYPOINT) VALUES(?)";
+			PreparedStatement pStmt = conn.prepareStatement(sql);
+
+			//INSERT文中の「？」に使用する値を設定しSQLを完成
+			pStmt.setInt(1, happylife.getHappypoint());
+
+
+			//INSERT文の実行
+			int result = pStmt.executeUpdate();
+			if (result != 1) {
+				return false;
+			}
+
+		} catch (SQLException e) {
+			// TODO: handle exception
+			e.printStackTrace();
+			return false;
+		}
+		return true;
+	}
 
 }
 
