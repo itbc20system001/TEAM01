@@ -9,7 +9,7 @@ import javabeans.HappyLife;
 
 public class OrderDescDAO {
 	//データベース接続に使用する情報
-	private final String JDBC_URL = "jdbc:mariadb://localhost/kohukudo";//仮
+	private final String JDBC_URL = "";//未定
 	private final String DB_USER = "root";
 	private final String DB_PASS = "insource.2015it";
 
