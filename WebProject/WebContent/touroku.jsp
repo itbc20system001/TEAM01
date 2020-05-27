@@ -17,6 +17,7 @@
 住所（その他）：<input type="text" name="o_address"><br>
 電話番号：<input type="text" name="tel"><br>
 Eメールアドレス：<input type="text" name="email"><br>
+※西暦‐月‐日の形で
 生年月日：<input type="text" name="birthday"><br>
 パスワード：<input type="text" name="password"><br>
 <input type="submit" value ="送信">
