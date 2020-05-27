@@ -14,12 +14,6 @@ public class HappyLife implements Serializable {
 	private int userid;//ユーザーID
 	private LocalDateTime orderDate;//注文時間
 	private LocalDateTime limitDate;//有効期限
-	private String email;//eメールアドレス
-	private String password;//パスワード
-
-
-
-
 
 
 	public int getPo_id() {
@@ -55,21 +49,6 @@ public class HappyLife implements Serializable {
 		this.limitDate = limitDate;
 	}
 
-	public String getEmail() {
-		return email;
-	}
-
-	public void setEmail(String email) {
-		this.email = email;
-	}
-
-	public String getPassword() {
-		return password;
-	}
-
-	public void setPassword(String password) {
-		this.password = password;
-	}
 
 	public int getHappypoint() {
 		return happypoint;
