@@ -3,6 +3,7 @@ package dao;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
+import java.time.LocalDateTime;
 
 import javabeans.HappyLife;
 
@@ -18,10 +19,17 @@ public class OrderMainDAO {
 					String sql = "INSERT INTO order_main(NAME, TEXT) VALUES (?,?,?,?)";
 					PreparedStatement pStmt = conn.prepareStatement(sql);
 
+
+					//現在時刻と有効期限の型をsql.dateに変換
+					LocalDateTime god = happylife.getOrderDate();
+					java.sql.Timestamp javaSqlDate = java.sql.Timestamp.valueOf(god);
+					LocalDateTime gld = happylife.getLimitDate();
+					java.sql.Timestamp javaSqlDate2 = java.sql.Timestamp.valueOf(gld);
+
 					pStmt.setInt(1, happylife.getProductid());
 					pStmt.setInt(2, happylife.getUserid());
-			//		pStmt.setDate(3, happylife.getOrderDate());//注文確定ボタンを押したときの時間をorderdateに代入
-			//		pStmt.setDate(4, happylife.getLimitDate());//その後24時間後を足す
+					pStmt.setTimestamp(3, javaSqlDate);//注文確定ボタンを押したときの時間をorderdateに代入
+					pStmt.setTimestamp(4, javaSqlDate2);//その後24時間後を足す
 
 					int result = pStmt.executeUpdate();
 					if(result != 1) {
