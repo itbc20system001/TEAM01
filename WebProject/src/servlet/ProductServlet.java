@@ -59,7 +59,7 @@ public class ProductServlet extends HttpServlet {
 
 		if(name.equals("商品1を購入")) {
 			path="shouhin1.jsp";
-			happyLife.setProductid(1);
+			//happyLife.setP_id_list.add(1);
 		}
 		//RequestDispatcher dispatcher =request.getRequestDispatcher(path);
 		//dispatcher.forward(request, response);
