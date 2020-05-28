@@ -9,24 +9,24 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>最初からシャワーから温水が出る</title>
+<title>勝手に見つけやすいところに移動するリモコン</title>
 </head>
 <body>
   <table>
-    <th>最初からシャワーから温水が出る<br><%=productList.get(0).getPrice()%>KP
+    <th>勝手に見つけやすいところに移動するリモコン<br><%=productList.get(1).getPrice()%>KP
     </th>
     <tr>
       <td><img src="image/kari.gif" width="300" height="300" alt="shouhin1">
       <td>
-      <td>最初からシャワーから温水が出る</td>
+      <td>勝手に見つけやすいところに移動するリモコン</td>
     <tr>
   </table>
 
   <%
-  	if (!happyLife.getP_Buy_List().contains(productList.get(0))) {
+  	if (!happyLife.getP_Buy_List().contains(productList.get(1))) {
   %>
   <form action="Product" method="POST">
-    <input type="submit" value="<%=productList.get(0).getP_name() %>を購入" name="購入" onclick="cartIn()">
+    <input type="submit" value="<%=productList.get(1).getP_name() %>を購入" name="購入" onclick="cartIn()">
   </form>
   <%
   	} else {

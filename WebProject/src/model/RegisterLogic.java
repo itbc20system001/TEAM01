@@ -1,6 +1,7 @@
 package model;
 
 import dao.UsrDAO;
+import javabeans.HappyLife;
 import javabeans.Register;
 
 public class RegisterLogic {
@@ -9,7 +10,11 @@ public class RegisterLogic {
 		UsrDAO dao = new UsrDAO();
 		return dao.create(reg);//
 	}
-
+	public boolean kpExcute(HappyLife happyLife,Register reg) {
+		//データベースの成否チェック
+		UsrDAO dao = new UsrDAO();
+		return dao.create(happyLife,reg);//
+	}
 	public boolean inputExcute(Register reg) {
 
 		//ユーザーの入力不備チェック

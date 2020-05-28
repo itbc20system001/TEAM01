@@ -1,9 +1,15 @@
 package javabeans;
 
-public class Product {
+import java.io.Serializable;
+
+public class Product implements Serializable{
 	private int p_id;
 	private String p_name;
 	private int price;
+
+	public Product() {
+		// TODO 自動生成されたコンストラクター・スタブ
+	}
 
 	public Product(int p_id, String p_name, int price) {
 		super();
