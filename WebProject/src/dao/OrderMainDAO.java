@@ -16,7 +16,7 @@ public class OrderMainDAO {
 			public boolean create(HappyLife happylife) {
 				try(Connection conn = DriverManager.getConnection(JDBC_URL,DB_USER,DB_PASS)) {
 
-					String sql = "INSERT INTO order_main(NAME, TEXT) VALUES (?,?,?,?)";
+					String sql = "INSERT INTO order_main(NAME, TEXT) VALUES (?,?,?)";
 					PreparedStatement pStmt = conn.prepareStatement(sql);
 
 
@@ -26,10 +26,10 @@ public class OrderMainDAO {
 					LocalDateTime gld = happylife.getLimitDate();
 					java.sql.Timestamp javaSqlDate2 = java.sql.Timestamp.valueOf(gld);
 
-					pStmt.setInt(1, happylife.getProductid());
-					pStmt.setInt(2, happylife.getUserid());
-					pStmt.setTimestamp(3, javaSqlDate);//注文確定ボタンを押したときの時間をorderdateに代入
-					pStmt.setTimestamp(4, javaSqlDate2);//その後24時間後を足す
+					//productID(po_id)はauto_incrementなので不要
+					pStmt.setInt(1, happylife.getUserid());
+					pStmt.setTimestamp(2, javaSqlDate);//注文確定ボタンを押したときの時間をorderdateに代入
+					pStmt.setTimestamp(3, javaSqlDate2);//その後24時間後を足す
 
 					int result = pStmt.executeUpdate();
 					if(result != 1) {
