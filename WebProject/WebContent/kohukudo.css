@@ -1,0 +1,43 @@
+@charset "UTF-8";
+html{
+	font-family:sans-serif;
+}
+body{
+	background-coror:#deb887;
+}
+p{
+	a:link{
+	color: #d25833;
+	}
+	a:visited{
+	color: #d25833
+	}
+	a:hover{
+	color: #e3937a;
+	}
+	a:activ{
+	color: #ff6a3b
+	}
+}
+.logo{
+	margin:50px 0 40px 0;
+	line-height:0;
+	text-align:center;
+}
+.nav li{
+	display: inline;
+	list-style-type: none;
+	padding-right: 30px;
+}
+.nav a:link{
+	color: #ff8040;
+}
+nav a:visited{
+	color:#ff8040;
+}
+nav a:hover{
+	color:#ff8000;
+}
+nav a:active{
+	color:#804040;
+}
