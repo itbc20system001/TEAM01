@@ -79,7 +79,7 @@ public class BoughtServlet extends HttpServlet {
 			PostOrderDescDAOLogic poddl = new PostOrderDescDAOLogic();
 			poddl.execute(hl);
 		}
-		//↑繰り返しここまで
+		//↑繰り返しここまで！！
 
 /*		HappyCalcLogic未インポートのためエラー
  * ここから97行目までの内容をBuyServletにするかも？
