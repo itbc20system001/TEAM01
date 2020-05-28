@@ -29,7 +29,7 @@ public class LogoutServlet extends HttpServlet {
 
 			response.sendRedirect("logout_kanryou.jsp");
 		}else {
-			response.sendRedirect("top.jsp");
+			response.sendRedirect("Product");
 		}
 	}
 }

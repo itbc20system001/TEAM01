@@ -13,6 +13,14 @@
 <title>商品一覧</title>
 </head>
 <body>
+<header>
+ようこそ、<%=happyLife.getUsrName() %>さん
+所有KP:<%=happyLife.getHappypoint() %>KP
+<a href="top.jsp">幸福堂TOP</a>
+<a href="CartServlet">カート画面</a>
+<a href="Product">商品一覧画面</a>
+<a href="logout_kakunin.jsp">ログアウト</a>
+</header>
 <table align="center">
 <tr>
 <%for(int i=0;i<productList.size();i++){ %>
@@ -26,9 +34,6 @@
 <td><a href="shouhin3.jsp"><img src="image/kari.gif" width="200" height="200" alt="shouhin3"></a></td>
 <td><a href="shouhin4.jsp"><img src="image/kari.gif" width="200" height="200" alt="shouhin4"></a></td>
 </tr>
-<%=happyLife.getHappypoint() %>
-<%=happyLife.getUserid() %>
-<%=happyLife.getUsrName() %>
 </table>
 <a href="CartServlet">カートへ</a>
 </body>

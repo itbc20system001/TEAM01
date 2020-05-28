@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-<html>
+<html lang="ja">
 <head>
 <meta charset="UTF-8">
 <title>新規会員登録</title>
@@ -13,7 +13,7 @@
 利用者名（氏カナ）：<input type="text" name="l_name_kana"><br>
 利用者名（名カナ）：<input type="text" name="f_name_kana"><br>
 住所（都道府県）：<input type="text" name="prefecture"><br>
-住所（市町村名）：<input type="text" name="city"><br>
+住所（市区町村名）：<input type="text" name="city"><br>
 住所（その他）：<input type="text" name="o_address"><br>
 電話番号：<input type="text" name="tel"><br>
 Eメールアドレス：<input type="text" name="email"><br>
