@@ -7,6 +7,7 @@
 <title>幸福堂</title>
 </head>
 <body>
+<h1 style="text-align:center"><a href="top.jsp"><img src="image/kohukudo_logo.jpg" alt="幸福堂"></a></h1>
 <h2 style="text-align:center">幸福について</h2>
 <p style="text-align:center">「幸福」とは、何でしょうか？幸福には十人十色の形があります。<br>
 美味しいものを食べる、ぐっすり眠る、恋人と一緒に過ごす…。<br>
