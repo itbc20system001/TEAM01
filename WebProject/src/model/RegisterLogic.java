@@ -15,6 +15,12 @@ public class RegisterLogic {
 		UsrDAO dao = new UsrDAO();
 		return dao.create(happyLife,reg);//
 	}
+
+	public boolean emailExecute(Register reg) {
+		UsrDAO dao = new UsrDAO();
+		return dao.isEmail(reg);
+	}
+
 	public boolean inputExcute(Register reg) {
 
 		//ユーザーの入力不備チェック

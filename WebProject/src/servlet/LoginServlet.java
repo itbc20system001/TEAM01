@@ -41,6 +41,7 @@ public class LoginServlet extends HttpServlet {
 				path= "/kohukudo/Product";
 				HttpSession session = request.getSession();
 				HappyLife happyLife = new HappyLife();
+				happyLife =loginLogic.sessionExecute(login, happyLife);
 				session.setAttribute("happy", happyLife);
 				ArrayList<Product> productList = new ArrayList<Product>();
 				ProductListLogic productListLogic = new ProductListLogic();

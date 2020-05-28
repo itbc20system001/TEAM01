@@ -6,6 +6,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
+import javabeans.HappyLife;
 import javabeans.Login;
 
 public class LoginDAO {
@@ -40,5 +41,37 @@ public class LoginDAO {
 			return false;
 		}
 		return false;
+	}
+	public HappyLife sessionIn (Login login,HappyLife happyLife) {
+
+		try {
+			Class.forName("org.mariadb.jdbc.Driver");
+		} catch (ClassNotFoundException e1) {
+			// TODO 自動生成された catch ブロック
+			e1.printStackTrace();
+		}
+
+
+		try(Connection conn = DriverManager.getConnection(JDBC_URL,DB_USER,DB_PASS)){
+
+			String sql = "select user_id,l_name,happy from usr where email = ?";
+			PreparedStatement pStmt = conn.prepareStatement(sql);
+			pStmt.setString(1, login.getEmail());
+
+			ResultSet rs = pStmt.executeQuery();
+			if(rs.next()) {
+				int user_id = rs.getInt("user_id");
+				String l_name = rs.getString("l_name");
+				int happypoint = rs.getInt("happy");
+				happyLife.setUserid(user_id);
+				happyLife.setUsrName(l_name);
+				happyLife.setHappypoint(happypoint);
+				//return happyLife;
+			}
+		}catch(SQLException e) {
+			e.printStackTrace();
+			return null;
+		}
+		return happyLife;
 	}
 }

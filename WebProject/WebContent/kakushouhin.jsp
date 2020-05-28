@@ -26,9 +26,10 @@
 <td><a href="shouhin3.jsp"><img src="image/kari.gif" width="200" height="200" alt="shouhin3"></a></td>
 <td><a href="shouhin4.jsp"><img src="image/kari.gif" width="200" height="200" alt="shouhin4"></a></td>
 </tr>
-
+<%=happyLife.getHappypoint() %>
+<%=happyLife.getUserid() %>
+<%=happyLife.getUsrName() %>
 </table>
-
 <a href="CartServlet">カートへ</a>
 </body>
 </html>
