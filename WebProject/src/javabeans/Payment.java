@@ -2,7 +2,7 @@ package javabeans;
 
 public class Payment {
 
-	private int sum;//購入金額
+	private int sum;//購入金額！
 	private int change;//おつり
 
 	public int getSum() {
