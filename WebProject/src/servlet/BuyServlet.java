@@ -26,28 +26,16 @@ public class BuyServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
-		//そのまま購入する場合の処理
 		//購入金額を計算するロジックを呼ぶ処理
 		request.setCharacterEncoding("UTF-8");
 		HappyCalcLogic hcl = new HappyCalcLogic();
-		Payment p = hcl.buyCalc();
+		Payment payment = hcl.buyCalc();
 
 		HttpSession session = request.getSession();
-		session.setAttribute("payment", p);
+		session.setAttribute("payment", payment);
 
 		RequestDispatcher dispatcher = request.getRequestDispatcher("kakunin.jsp");
 		dispatcher.forward(request, response);
-
-		/*	作業途中
-		 * 購入が取りやめになった場合の処理（２回目以降に呼ばれる処理）
-				確認jsp画面で、購入を取りやめた場合
-					セッションスコープに入っているpaymentを削除してcart.jspに遷移する処理
-					request.setCharacterEncoding("UTF-8");
-
-					HttpSession session = request.getSession();
-					session.removeAttribute("payment");
-					RequestDispatcher dispatcher =request.getRequestDispatcher("cart.jsp");
-					dispatcher.forward(request, response);*/
 
 	}
 
