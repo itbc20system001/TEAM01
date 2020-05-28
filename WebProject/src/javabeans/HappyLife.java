@@ -9,10 +9,9 @@ public class HappyLife implements Serializable {
 
 	private int happypoint;//KP!
 	private int price;//値段
-
 	private int productid;//p_idを入れる予定
 	private ArrayList<Product> p_Buy_List = new ArrayList<Product>();
-
+	private String message;//何かしらのメッセージ(仮)
 	private String usrName;//ユーザーネーム
 	private int po_id;//注文番号
 	private int userid;//ユーザーID
@@ -93,5 +92,12 @@ public class HappyLife implements Serializable {
 
 	public void setP_Buy_List(ArrayList<Product> p_Buy_List) {
 		this.p_Buy_List = p_Buy_List;
+	}
+	public String getMessage() {
+		return message;
+	}
+
+	public void setMessage(String message) {
+		this.message = message;
 	}
 }

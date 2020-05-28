@@ -3,6 +3,7 @@ package dao;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import javabeans.HappyLife;
@@ -102,6 +103,40 @@ public class UsrDAO {
 		}
 		return true;
 	}
+
+	public boolean isEmail(Register register) {
+
+		try {
+			Class.forName("org.mariadb.jdbc.Driver");
+		} catch (ClassNotFoundException e1) {
+			e1.printStackTrace();
+		}
+		//データベース接続
+		try (Connection conn = DriverManager.getConnection(
+				JDBC_URL, DB_USER, DB_PASS)) {
+
+
+			String sql = "select email, password from usr where email = ?";
+			PreparedStatement pStmt = conn.prepareStatement(sql);
+			pStmt.setString(1, register.getEmail());
+
+			ResultSet rs = pStmt.executeQuery();
+			if(rs.next()) {
+				String email = rs.getString("email");
+				if(email.equals(register.getEmail())) {
+					return true;
+				}
+			}
+
+		} catch (SQLException e) {
+			// TODO: handle exception
+			e.printStackTrace();
+			return false;
+		}
+		return false;
+	}
+
+
 	public boolean create2(HappyLife happylife) {
 
 		try {

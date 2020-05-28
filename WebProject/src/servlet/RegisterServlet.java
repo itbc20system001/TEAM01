@@ -51,25 +51,44 @@ public class RegisterServlet extends HttpServlet {
 		HappyLife happyLife = new HappyLife();
 		HappyGive happyGive = new HappyGive();
 		happyLife.setHappypoint(happyGive.pointExcute(reg));
-
+		request.setAttribute("KP", happyLife);
 		//ログイン処理
 		RegisterLogic bo = new RegisterLogic();
-		//boolean dbResult = bo.dbExcute(reg);//DB上の成否
-		boolean dbResult = bo.kpExcute(happyLife,reg);//↑の処理を発展のため分ける
-		boolean inputResult = bo.inputExcute(reg);//jspでのユーザー側の入力の不備
+		boolean isEmailResult = bo.emailExecute(reg);//既に同じemailがないかチェック
+		System.out.println(isEmailResult);
+		boolean dbResult=false;
+		boolean inputResult=false;
+		if(!isEmailResult) {
+			//boolean dbResult = bo.dbExcute(reg);//DB上の成否
+			dbResult= bo.kpExcute(happyLife,reg);//↑の処理を発展のため分ける
+			inputResult= bo.inputExcute(reg);//jspでのユーザー側の入力の不備
 
-		request.setAttribute("KP", happyLife);
+			//ログイン処理の成否によって条件を分岐
+			if (dbResult && inputResult) { //成功時
+				request.setCharacterEncoding("UTF-8");
+				RequestDispatcher dispatcher = request.getRequestDispatcher("tourokucomplete.jsp");
+				dispatcher.forward(request, response);
+			} else if(!dbResult && inputResult){ //失敗時
+				happyLife.setMessage("生年月日の入力が間違っています");
+				request.setCharacterEncoding("UTF-8");
+				RequestDispatcher dispatcher = request.getRequestDispatcher("touroku_error.jsp");
+				dispatcher.forward(request, response);
+			}else{
+				happyLife.setMessage("入力箇所に洩れがあります");
+				request.setCharacterEncoding("UTF-8");
+				RequestDispatcher dispatcher = request.getRequestDispatcher("touroku_error.jsp");
+				dispatcher.forward(request, response);
+			}
 
-		//ログイン処理の成否によって条件を分岐
-		if (dbResult && inputResult) { //成功時
-			request.setCharacterEncoding("UTF-8");
-			RequestDispatcher dispatcher = request.getRequestDispatcher("tourokucomplete.jsp");
-			dispatcher.forward(request, response);
-		} else { //失敗時
+		}else {
+			happyLife.setMessage("同じメールアドレスが登録されています");
 			request.setCharacterEncoding("UTF-8");
 			RequestDispatcher dispatcher = request.getRequestDispatcher("touroku_error.jsp");
 			dispatcher.forward(request, response);
 		}
+
+
+
 
 	}
 }
