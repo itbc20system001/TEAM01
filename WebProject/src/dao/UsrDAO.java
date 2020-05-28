@@ -58,8 +58,8 @@ public class UsrDAO {
 		return true;
 	}
 
-
-	public boolean create(HappyLife happylife) {
+	//現在使用中
+	public boolean create(HappyLife happylife, Register register) {
 
 		try {
 			Class.forName("org.mariadb.jdbc.Driver");
@@ -72,12 +72,22 @@ public class UsrDAO {
 
 			//INSERT文の準備
 			String sql =
-					"INSERT INTO USR(HAPPYPOINT) VALUES(?)";
+					"INSERT INTO USR(L_NAME,F_NAME,L_NAME_KANA,F_NAME_KANA,PREFECTURE,CITY,O_ADDRESS,TEL,EMAIL,BIRTHDAY,PASSWORD,HAPPY) VALUES(?,?,?,?,?,?,?,?,?,?,?,?)";
 			PreparedStatement pStmt = conn.prepareStatement(sql);
 
 			//INSERT文中の「？」に使用する値を設定しSQLを完成
-			pStmt.setInt(1, happylife.getHappypoint());
-
+			pStmt.setString(1, register.getL_name());
+			pStmt.setString(2, register.getF_name());
+			pStmt.setString(3, register.getL_name_kana());
+			pStmt.setString(4, register.getF_name_kana());
+			pStmt.setString(5, register.getPrefecture());
+			pStmt.setString(6, register.getCity());
+			pStmt.setString(7, register.getO_address());
+			pStmt.setString(8, register.getTel());
+			pStmt.setString(9, register.getEmail());
+			pStmt.setString(10, register.getBirthday());
+			pStmt.setString(11, register.getPassword());
+			pStmt.setInt(12, happylife.getHappypoint());
 
 			//INSERT文の実行
 			int result = pStmt.executeUpdate();

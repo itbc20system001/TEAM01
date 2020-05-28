@@ -1,6 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-    <%@ page import="javax.servlet.http.HttpSession"%>
+    <%@page import="javabeans.*"%>
+<%@page import="java.util.ArrayList"%>
+<%HappyLife happyLife =(HappyLife)session.getAttribute("happy"); %>
+<%ArrayList<Product> productList = (ArrayList<Product>)session.getAttribute("product");
+
+%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -10,10 +15,9 @@
 <body>
 <table align="center">
 <tr>
-<th>商品1<br>100KP</th>
-<th>商品2<br>200KP</th>
-<th>商品3<br>300KP</th>
-<th>商品4<br>400KP</th>
+<%for(int i=0;i<productList.size();i++){ %>
+<th><%=productList.get(i).getP_name() %><br><%=productList.get(i).getPrice() %>KP</th>
+<%} %>
 </tr>
 
 <tr>

@@ -1,6 +1,8 @@
 package javabeans;
 
-public class Register {
+import java.io.Serializable;
+
+public class Register implements Serializable {
 	private String l_name ;
 	private String f_name ;
 	private String l_name_kana ;

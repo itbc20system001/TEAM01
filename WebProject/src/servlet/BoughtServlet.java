@@ -25,6 +25,12 @@ public class BoughtServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");
+		//セッションスコープ
+		HttpSession session = request.getSession();
+		HappyLife happyLife =(HappyLife)session.getAttribute("happy");
+
+		happyLife.getP_Buy_List().clear();//カート内商品全消去
+
 		RequestDispatcher dispatcher =request.getRequestDispatcher("tyuumon.jsp");
 		dispatcher.forward(request, response);
 	}

@@ -9,7 +9,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import javabeans.HappyLife;
 import javabeans.Register;
+import model.HappyGive;
 import model.RegisterLogic;
 
 @WebServlet("/RegisterServlet")
@@ -45,10 +47,18 @@ public class RegisterServlet extends HttpServlet {
 		reg.setBirthday(request.getParameter("birthday"));
 		reg.setPassword(request.getParameter("password"));
 
+		//めんどくさくなったので先にKPのランダムを計算してからデータベースにぶち込む
+		HappyLife happyLife = new HappyLife();
+		HappyGive happyGive = new HappyGive();
+		happyLife.setHappypoint(happyGive.pointExcute(reg));
+
 		//ログイン処理
 		RegisterLogic bo = new RegisterLogic();
-		boolean dbResult = bo.dbExcute(reg);//DB上の成否
+		//boolean dbResult = bo.dbExcute(reg);//DB上の成否
+		boolean dbResult = bo.kpExcute(happyLife,reg);//↑の処理を発展のため分ける
 		boolean inputResult = bo.inputExcute(reg);//jspでのユーザー側の入力の不備
+
+		request.setAttribute("KP", happyLife);
 
 		//ログイン処理の成否によって条件を分岐
 		if (dbResult && inputResult) { //成功時
