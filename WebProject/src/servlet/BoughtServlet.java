@@ -103,7 +103,9 @@ public class BoughtServlet extends HttpServlet {
 		hl2.setHappypoint(zankin);
 		brl.execute(hl2);
 
-		request.setAttribute("point", hl2);
+		payment.setPoint(point);
+
+		request.setAttribute("point", payment);
 
 		//注文完了画面にフォワード
 		RequestDispatcher dispatcher =request.getRequestDispatcher("tyuumon.jsp");
