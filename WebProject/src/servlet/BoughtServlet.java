@@ -13,7 +13,10 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import javabeans.HappyLife;
+import javabeans.Payment;
 import javabeans.Product;
+import model.BalanceRegisterLogic;
+import model.HappyCalcLogic;
 import model.PostOrderDescDAOLogic;
 import model.PostOrderMainDAOLogic;
 
@@ -81,31 +84,35 @@ public class BoughtServlet extends HttpServlet {
 		}
 		//↑繰り返しここまで！！
 
-/*		HappyCalcLogic未インポートのためエラー
- * ここから97行目までの内容をBuyServletにするかも？
-		//残金の計算HappyCalcLogicメソッド呼び出し
-		HappyCalcLogic hcl = new HappyCalcLogic();
-		KouhukuPoint(仮) KP = hcl.BuyCalc();//
 
-		if(KP.getOturi < 0) {
-			HttpSession session2 = request.getSession();
-			session2.setAttribute("KP", KP);
-			RequestDispatcher dispatcher =request.getRequestDispatcher("kounyuerror.jsp");
-			dispatcher.forward(request, response);
-		}
+ 		//残金とかが入ってるセッションスコープを呼び出す
+		Payment payment = (Payment)session.getAttribute("payment");
+		int KP = payment.getChange();
 
-		//ここでランダムでポイント付与するかも（その場合HappyCalcLogicで残金とガチャポイントを足す）
+		if(KP >= 0) {
+
+			//ランダムでポイントキャッシュバック
+			HappyCalcLogic hcl = new HappyCalcLogic();
+			int point = hcl.cashBack();
+
+			int zankin = KP + point;
 
 		//残りの幸福ポイント(おつり)をusrテーブルに登録
 		HappyLife hl2 = new HappyLife();
 		BalanceRegisterLogic brl = new BalanceRegisterLogic();
-		hl2.setHappypoint(KP.getOturi());
+		hl2.setHappypoint(zankin);
 		brl.execute(hl2);
-*/
+
+		request.setAttribute("point", hl2);
 
 		//注文完了画面にフォワード
-		/*RequestDispatcher dispatcher =request.getRequestDispatcher("tyuumon.jsp");
-		dispatcher.forward(request, response);*/
+		RequestDispatcher dispatcher =request.getRequestDispatcher("tyuumon.jsp");
+		dispatcher.forward(request, response);
+
+		}else {//エラー画面にフォワード
+			RequestDispatcher dispatcher =request.getRequestDispatcher("kounyuerror.jsp");
+			dispatcher.forward(request, response);
+		}
 
 	}
 
