@@ -8,10 +8,6 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
-
-import javabeans.Payment;
-import model.HappyCalcLogic;
 
 /**
  * Servlet implementation class BuyServlet
@@ -25,14 +21,6 @@ public class BuyServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-
-		//購入金額を計算するロジックを呼ぶ処理
-		request.setCharacterEncoding("UTF-8");
-		HappyCalcLogic hcl = new HappyCalcLogic();
-		Payment payment = hcl.buyCalc();
-
-		HttpSession session = request.getSession();
-		session.setAttribute("payment", payment);
 
 		RequestDispatcher dispatcher = request.getRequestDispatcher("kakunin.jsp");
 		dispatcher.forward(request, response);

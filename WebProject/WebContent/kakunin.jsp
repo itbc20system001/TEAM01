@@ -5,6 +5,9 @@
 	HappyLife happyLife = (HappyLife) session.getAttribute("happy");
 %>
 <%
+    Payment payment = (Payment) session.getAttribute("payment");
+%>
+<%
 	ArrayList<Product> productList = (ArrayList<Product>) session.getAttribute("product");
 %>
 <!DOCTYPE html>
@@ -27,7 +30,9 @@
   	}
   %>
   <p>
-  <p>購入前:○○KP→購入後:□□KP</p>
+  購入前:<%= happyLife.getHappypoint() %>KP<br>
+  購入後:<%= payment.getChange() %>KP
+  </p>
 
   <a href=BoughtServlet>購入確定</a>
   <br>

@@ -12,6 +12,7 @@ import javax.servlet.http.HttpSession;
 
 import javabeans.HappyLife;
 import javabeans.Login;
+import javabeans.Payment;
 import javabeans.Product;
 import model.LoginLogic;
 import model.ProductListLogic;
@@ -34,12 +35,15 @@ public class LoginServlet extends HttpServlet {
 		login.setPass(request.getParameter("pass"));
 		LoginLogic loginLogic = new LoginLogic();
 
+
 		String path="";
 		boolean isLogin =loginLogic.execute(login);
 
 			if(isLogin) {
 				path= "/kohukudo/Product";
 				HttpSession session = request.getSession();
+				Payment payment = new Payment();
+				session.setAttribute("payment", payment);
 				HappyLife happyLife = new HappyLife();
 				happyLife =loginLogic.sessionExecute(login, happyLife);
 				session.setAttribute("happy", happyLife);
