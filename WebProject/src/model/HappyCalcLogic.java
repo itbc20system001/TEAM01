@@ -23,11 +23,21 @@ public class HappyCalcLogic {
 
 		//購入計算処理後の情報を格納するjavabeansを生成。→処理結果をセット
 		Payment paymentInfo = new Payment();
-		paymentInfo.setTemporaryHappy(usrHappy);;
 		paymentInfo.setSum(sum);
 		paymentInfo.setChange(change);
 
 		return paymentInfo;
+	}
+
+
+	//購入後のポイントキャッシュバック
+	public int cashBack() {
+		int point = (int) (Math.random()*10000);
+
+		Payment paymentInfo = new Payment();
+		paymentInfo.setPoint(point);
+
+		return point;
 	}
 
 }

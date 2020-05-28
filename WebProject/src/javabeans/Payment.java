@@ -4,7 +4,7 @@ public class Payment {
 
 	private int sum;//購入金額！
 	private int change;//おつり
-	private int temporaryHappy;//仮のKP.購入計算後のKPを一時的に格納.
+	private int point;//購入後のキャッシュバックポイント
 
 	public int getSum() {
 		return sum;
@@ -18,11 +18,11 @@ public class Payment {
 	public void setChange(int change) {
 		this.change = change;
 	}
-	public int getTemporaryHappy() {
-		return temporaryHappy;
+	public int getPoint() {
+		return point;
 	}
-	public void setTemporaryHappy(int temporaryHappy) {
-		this.temporaryHappy = temporaryHappy;
+	public void setPoint(int point) {
+		this.point = point;
 	}
 
 
