@@ -31,6 +31,6 @@
 
   <a href=BoughtServlet>購入確定</a>
   <br>
-  <a href=CartServlet>戻る</a>
+  <a href=BuyServlet>戻る</a>
 </body>
 </html>
