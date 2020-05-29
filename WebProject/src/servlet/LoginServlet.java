@@ -30,30 +30,32 @@ public class LoginServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		request.setCharacterEncoding("UTF-8");
+		//入力されたものを格納
 		Login login = new Login();
 		login.setEmail(request.getParameter("email"));
 		login.setPass(request.getParameter("pass"));
 		LoginLogic loginLogic = new LoginLogic();
 
-
+		//ログイン正否
 		String path="";
 		boolean isLogin =loginLogic.execute(login);
 
-			if(isLogin) {
-				path= "/kohukudo/Product";
-				HttpSession session = request.getSession();
-				Payment payment = new Payment();
-				session.setAttribute("payment", payment);
-				HappyLife happyLife = new HappyLife();
-				happyLife =loginLogic.sessionExecute(login, happyLife);
-				session.setAttribute("happy", happyLife);
-				ArrayList<Product> productList = new ArrayList<Product>();
-				ProductListLogic productListLogic = new ProductListLogic();
-				productList = productListLogic.execute(productList);
-				session.setAttribute("product", productList);
-			}else {
-				path= "loginerror.jsp";
-			}
+		if(isLogin) {
+			path= "/kohukudo/Product";
+			//セッションスコープに3つを宣言
+			HttpSession session = request.getSession();
+			Payment payment = new Payment();
+			session.setAttribute("payment", payment);
+			HappyLife happyLife = new HappyLife();
+			happyLife =loginLogic.sessionExecute(login, happyLife);
+			session.setAttribute("happy", happyLife);
+			ArrayList<Product> productList = new ArrayList<Product>();
+			ProductListLogic productListLogic = new ProductListLogic();
+			productList = productListLogic.execute(productList);
+			session.setAttribute("product", productList);
+		}else {
+			path= "loginerror.jsp";
+		}
 
 
 		//RequestDispatcher dispatcher = request.getRequestDispatcher("Product");

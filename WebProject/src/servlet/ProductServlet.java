@@ -56,7 +56,6 @@ public class ProductServlet extends HttpServlet {
 
 		request.setCharacterEncoding("UTF-8");
 		String name=request.getParameter("購入");
-		System.out.println(name);
 		String path="";
 		HttpSession session = request.getSession();
 		HappyLife happyLife =(HappyLife)session.getAttribute("happy");

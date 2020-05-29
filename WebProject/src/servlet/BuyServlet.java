@@ -8,6 +8,9 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
+import javabeans.HappyLife;
 
 /**
  * Servlet implementation class BuyServlet
@@ -21,7 +24,10 @@ public class BuyServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-
+		HttpSession session = request.getSession();
+		HappyLife happy = (HappyLife) session.getAttribute("happy");
+		happy.setOrderDate(null);
+		happy.setLimitDate(null);
 		RequestDispatcher dispatcher = request.getRequestDispatcher("kakunin.jsp");
 		dispatcher.forward(request, response);
 

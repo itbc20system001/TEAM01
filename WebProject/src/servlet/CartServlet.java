@@ -30,11 +30,15 @@ public class CartServlet extends HttpServlet {
 		//購入金額を計算するロジックを呼ぶ処理
 		request.setCharacterEncoding("UTF-8");
 		HappyCalcLogic hcl = new HappyCalcLogic();
-		Payment payment = hcl.buyCalc();
+		//Payment payment = hcl.buyCalc();
 
+		//セッションからhappyとpaymentを呼び、カートに来るごとにpaymentを逐次計算
 		HttpSession session = request.getSession();
+		Payment payment = (Payment)session.getAttribute("payment");
+		HappyLife happyLife = (HappyLife)session.getAttribute("happy");
+		payment = hcl.buyCalc(happyLife);
+		//スコープpaymentを再定義
 		session.setAttribute("payment", payment);
-
 
 		request.setCharacterEncoding("UTF-8");
 		RequestDispatcher dispatcher =request.getRequestDispatcher("cart.jsp");
@@ -47,8 +51,8 @@ public class CartServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		request.setCharacterEncoding("UTF-8");
+		//削除ボタンが押された場合に指定の商品をカートから除く
 		String cartOutName=request.getParameter("削除");
-		System.out.println(cartOutName);
 		HttpSession session = request.getSession();
 		HappyLife happyLife =(HappyLife)session.getAttribute("happy");
 		ArrayList<Product> productList = (ArrayList<Product>)session.getAttribute("product");

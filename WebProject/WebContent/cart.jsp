@@ -6,6 +6,7 @@
 %>
 <%
 	ArrayList<Product> productList = (ArrayList<Product>) session.getAttribute("product");
+	Payment payment = (Payment) session.getAttribute("payment");
 %>
 <!DOCTYPE html>
 <html>
@@ -21,7 +22,7 @@
   <p>
   <form action="CartServlet" method="POST">
     <%=happyLife.getP_Buy_List().get(i).getP_name()%>:
-    <%=happyLife.getP_Buy_List().get(i).getPrice()%>KP <input type="submit" value="<%=happyLife.getP_Buy_List().get(i).getP_name() %>をカートから削除" name="削除" onclick="cartOut()">
+    <%=happyLife.getP_Buy_List().get(i).getPrice()%>KP <input type="submit" value="<%=happyLife.getP_Buy_List().get(i).getP_name()%>をカートから削除" name="削除" onclick="cartOut()">
   </form>
   </p>
   <%
