@@ -24,12 +24,19 @@ public class BuyServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		HttpSession session = request.getSession();
-		HappyLife happy = (HappyLife) session.getAttribute("happy");
-		happy.setOrderDate(null);
-		happy.setLimitDate(null);
-		RequestDispatcher dispatcher = request.getRequestDispatcher("kakunin.jsp");
-		dispatcher.forward(request, response);
+		try {
+			HttpSession session = request.getSession();
+			HappyLife happy = (HappyLife) session.getAttribute("happy");
+			happy.setOrderDate(null);
+			happy.setLimitDate(null);
+			RequestDispatcher dispatcher = request.getRequestDispatcher("kakunin.jsp");
+			dispatcher.forward(request, response);
+		} catch (NullPointerException e) {
+			// TODO: handle exception
+			e.printStackTrace();
+			RequestDispatcher dispatcher = request.getRequestDispatcher("top.jsp");
+			dispatcher.forward(request, response);
+		}
 
 	}
 

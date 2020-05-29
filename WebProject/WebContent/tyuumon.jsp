@@ -10,7 +10,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>注文完了</title>
+<title>幸福堂｜注文完了</title>
 </head>
 <body>
 

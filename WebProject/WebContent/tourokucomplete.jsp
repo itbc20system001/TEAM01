@@ -6,7 +6,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>登録完了</title>
+<title>幸福堂｜登録完了</title>
 </head>
 <body>
 <p>幸福ポイントが<%=happyLife.getHappypoint() %>KP付与されました。</p>

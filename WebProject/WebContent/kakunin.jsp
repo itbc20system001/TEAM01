@@ -14,7 +14,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>注文内容確認</title>
+<title>幸福堂｜注文内容確認</title>
 </head>
 <body>
 

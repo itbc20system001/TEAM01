@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>ログイン</title>
+<title>幸福堂｜ログイン</title>
 </head>
 <body>
 <form action="LoginServlet" method="post">

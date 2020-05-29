@@ -11,7 +11,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>会員情報の表示</title>
+<title>幸福堂｜会員情報の表示</title>
 </head>
 <body>
 <h1><%=happyLife.getUsrName() %>さんの会員情報</h1>

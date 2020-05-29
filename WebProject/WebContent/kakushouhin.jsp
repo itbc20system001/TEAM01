@@ -10,7 +10,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>商品一覧</title>
+<title>幸福堂｜商品一覧</title>
 </head>
 <body>
 <header>

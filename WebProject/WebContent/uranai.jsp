@@ -9,7 +9,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>占い</title>
+<title>幸福堂｜占い</title>
 </head>
 <body>
 	<form method="POST" action="UranaiServlet">

@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>購入履歴</title>
+<title>幸福堂｜購入履歴</title>
 </head>
 <body>
 <h1>過去の注文</h1>

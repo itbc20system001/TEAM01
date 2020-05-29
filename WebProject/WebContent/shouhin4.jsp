@@ -9,7 +9,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>信号に引っかからない</title>
+<title>幸福堂｜信号に引っかからない</title>
 <jsp:include page="header.jsp"/>
 </head>
 <body>

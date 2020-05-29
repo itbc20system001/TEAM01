@@ -17,19 +17,23 @@ public class LogoutServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		request.setCharacterEncoding("UTF-8");
+		try {
+			// TODO Auto-generated method stub
+			request.setCharacterEncoding("UTF-8");
+			String logout = request.getParameter("logoutyn");
+			if (logout.equals("yes")) {
 
-		String logout = request.getParameter("logoutyn");
-
-		if(logout.equals("yes")) {
-
-			HttpSession session = request.getSession(true);
-			//session.removeAttribute("happy");
-			session.invalidate();
-			response.sendRedirect("logout_kanryou.jsp");
-		}else {
-			response.sendRedirect("Product");
+				HttpSession session = request.getSession(true);
+				//session.removeAttribute("happy");
+				session.invalidate();
+				response.sendRedirect("logout_kanryou.jsp");
+			} else {
+				response.sendRedirect("Product");
+			}
+		} catch (NullPointerException e) {
+			// TODO: handle exception
+			e.printStackTrace();
+			response.sendRedirect("top.jsp");
 		}
 	}
 }
