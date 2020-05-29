@@ -166,7 +166,7 @@ public class UsrDAO {
 		return true;
 	}
 
-	public Register findUserInfo(Register reg ) {
+	public Register findUserInfo(Register reg, HappyLife happylife) {
 		//既に登録されてある会員情報をデータベースから取得しRegister.javaにセットする処理
 		try {
 			Class.forName("org.mariadb.jdbc.Driver");
@@ -178,13 +178,14 @@ public class UsrDAO {
 		try (Connection conn = DriverManager.getConnection(
 				JDBC_URL, DB_USER, DB_PASS)) {
 
-			String sql = "select * from usr where ";
+			String sql = "select * from usr where user_id = ?";
 			PreparedStatement pStmt = conn.prepareStatement(sql);
+			pStmt.setInt(1, happylife.getUserid());
+
 			ResultSet rs = pStmt.executeQuery();
 
 			if (rs.next()) {
 				//Register.javaに会員情報をセット
-
 
 				String l_name = rs.getString("l_name");
 				reg.setL_name(l_name);
