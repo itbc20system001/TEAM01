@@ -3,7 +3,7 @@ html{
 	font-family:sans-serif;
 }
 body{
-	background-coror:#deb887;
+	background-color:#deb887;
 }
 p{
 	a:link{
@@ -15,7 +15,7 @@ p{
 	a:hover{
 	color: #e3937a;
 	}
-	a:activ{
+	a:active{
 	color: #ff6a3b
 	}
 }
