@@ -19,6 +19,7 @@
 <a href="top.jsp">幸福堂TOP</a>
 <a href="CartServlet">カート画面</a>
 <a href="Product">商品一覧画面</a>
+<a href="mypage.jsp">マイページへ</a>
 <a href="logout_kakunin.jsp">ログアウト</a>
 </header>
 <table align="center">

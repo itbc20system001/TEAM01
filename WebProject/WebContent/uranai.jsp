@@ -9,6 +9,8 @@
 </head>
 <body>
 <h1>占い</h1>
+<form method = "GET" action="uranaiServlet.java">
+</form>
 <h2>※何回でも挑戦できます</h2>
 <h3><% %>KP獲得しました！</h3>
 <p><a href=mypage.jsp>マイページへ戻る</a></p>

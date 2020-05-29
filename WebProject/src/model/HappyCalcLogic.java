@@ -57,5 +57,36 @@ public class HappyCalcLogic {
 
 		return point;
 	}
+	//占い
+
+	public HappyLife uranai(HappyLife happyLife) {
+		int kekka = (int)(Math.random()*4)+1;
+		int KP =  happyLife.getHappypoint();
+		if(kekka > 1) {
+			//凶
+			//現在持っているKPに－20
+			happyLife.setMessage("凶");
+		    KP-=20;
+		}else if(kekka > 2) {
+			//小吉
+			//KP－10
+			happyLife.setMessage("小吉");
+			KP-=10;
+
+		}else if(kekka > 3) {
+			//中吉
+			//KP+10
+			happyLife.setMessage("中吉");
+			KP+=10;
+		}else {
+			//大吉
+			//KP+20
+			happyLife.setMessage("大吉");
+			KP+=20;
+		}
+
+		happyLife.setHappypoint(KP);
+		return happyLife;
+	}
 
 }
