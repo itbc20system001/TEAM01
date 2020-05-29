@@ -10,15 +10,27 @@
 <head>
 <meta charset="UTF-8">
 <title>並び始めたらすでに一番前にいる</title>
+<jsp:include page="header.jsp"/>
 </head>
 <body>
   <table>
     <th>並び始めたらすでに一番前にいる<br><%=productList.get(2).getPrice()%>KP
     </th>
     <tr>
-      <td><img src="image/kari.gif" width="300" height="300" alt="shouhin1">
+      <td><img src="image/行列.png" width="300" height="300" alt="shouhin1">
       <td>
-      <td>並び始めたらすでに一番前にいる</td>
+      <td>
+「超人気グッズを絶対に買いたい！」<br>
+<br>
+こういう経験、ありませんか？<br>
+<br>
+この商品をお買い上げいただければ、<br>
+貴方が行列の先頭にお並び出来ることを約束致します。<br>
+<br>
+詳しい手法は企業秘密とさせていただきますが、<br>
+効果が絶大な分、高額になります。<br>
+ご了承くださいませ。<br>
+</td>
     <tr>
   </table>
 
@@ -35,6 +47,7 @@
   <%
   	}
   %>
+    <jsp:include page="footer.jsp"/>
 </body>
 <script>
   var cartIn = function a() {

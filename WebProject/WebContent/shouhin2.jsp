@@ -10,15 +10,26 @@
 <head>
 <meta charset="UTF-8">
 <title>勝手に見つけやすいところに移動するリモコン</title>
+<jsp:include page="header.jsp"/>
 </head>
 <body>
   <table>
-    <th>勝手に見つけやすいところに移動するリモコン<br><%=productList.get(1).getPrice()%>KP
-    </th>
+      <th>勝手に見つけやすいところに移動するリモコン</th>
     <tr>
-      <td><img src="image/kari.gif" width="300" height="300" alt="shouhin1">
-      <td>
-      <td>勝手に見つけやすいところに移動するリモコン</td>
+    <td><img src="image/リモコン.png" width="300" height="300" alt="shouhin1">
+    <td>
+    <td>「外から帰ってきて汗だくなのにエアコンがなくてクーラーがつけられない！」<br>
+<br>
+こういう経験、ありませんか？<br>
+<br>
+見たいテレビ番組が始まりそうなのに<br>
+テレビのリモコンがない…なんて時もあるでしょう。<br>
+<br>
+この商品は、そんなリモコン問題を一括で解決してくれます。<br>
+<br>
+エアコン、テレビ、果ては車のキーまで。<br>
+<br>
+継続しての購入をお勧めしたい商品です。<br><!--  <%=productList.get(1).getPrice()%>KP -->
     <tr>
   </table>
 
@@ -35,6 +46,7 @@
   <%
   	}
   %>
+    <jsp:include page="footer.jsp"/>
 </body>
 <script>
   var cartIn = function a() {
