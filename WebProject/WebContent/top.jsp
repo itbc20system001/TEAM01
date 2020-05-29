@@ -1,14 +1,15 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>幸福堂</title>
 <link rel="stylesheet" href="kohukudo.css">
+<h1 style="text-align:center"><a href="top.jsp"><img src="image/kohukudo_logo_touka.png" alt="kohukudo"></a></h1>
 </head>
 <body>
-<h1 style="text-align:center"><a href="top.jsp"><img src="image/kohukudo_logo_touka.png" alt="kohukudo"></a></h1>
 <h2 style="text-align:center">幸福について</h2>
 <p style="text-align:center">「幸福」とは、何でしょうか？幸福には十人十色の形があります。<br>
 美味しいものを食べる、ぐっすり眠る、恋人と一緒に過ごす…。<br>
@@ -30,7 +31,8 @@
 何故ならば、幸福とはお金では買えぬものなのですから…。<br>
 <br>
 <a href="login.jsp">ログイン画面へ</a><br>
-<a href="touroku.jsp">新規会員登録</a>
+<a href="touroku.jsp">新規会員登録</a><br>
+<a href="kakushouhin.jsp">商品一覧画面</a>
 </p>
 
 </body>
