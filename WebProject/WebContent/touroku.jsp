@@ -67,7 +67,7 @@
 住所（その他）<br><input type="text" name="o_address"><br><br>
 電話番号<br><input type="text" name="tel"><br><br>
 Eメールアドレス<br><input type="text" name="email"><br><br>
-生年月日 ※西暦‐月‐日の形で入力<!-- <input type="text" name="birthday"> -->
+生年月日<!-- <input type="text" name="birthday"> -->
 
 
 <br>
