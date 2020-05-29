@@ -84,7 +84,7 @@ public class HappyCalcLogic {
 			happyLife.setMessage("大吉");
 			KP+=20;
 		}
-
+		System.out.println(happyLife.getMessage());
 		happyLife.setHappypoint(KP);
 		return happyLife;
 	}
