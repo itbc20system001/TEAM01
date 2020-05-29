@@ -29,13 +29,31 @@ public class HappyCalcLogic {
 		return paymentInfo;
 	}
 
+	//セッションスコープ内のモノを活用できるように変更
+	public Payment buyCalc(HappyLife happyLife) {
+
+		//現在のユーザーのhappypointを取得
+		int usrHappy = happyLife.getHappypoint();
+
+		//購入金額とおつりを計算
+		int sum = 0;
+		for (int i = 0; i < happyLife.getP_Buy_List().size(); i++) {
+			sum += happyLife.getP_Buy_List().get(i).getPrice();
+		}
+		int change = usrHappy - sum;
+		usrHappy -= sum;
+
+		//購入計算処理後の情報を格納するjavabeansを生成。→処理結果をセット
+		Payment paymentInfo = new Payment();
+		paymentInfo.setSum(sum);
+		paymentInfo.setChange(change);
+
+		return paymentInfo;
+	}
 
 	//購入後のポイントキャッシュバック
 	public int cashBack() {
-		int point = (int) (Math.random()*10000);
-
-		Payment paymentInfo = new Payment();
-		paymentInfo.setPoint(point);
+		int point = (int) (Math.random()*100);
 
 		return point;
 	}

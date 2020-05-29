@@ -150,12 +150,12 @@ public class UsrDAO {
 
 			//INSERT文の準備
 			String sql =
-					"UPDATE USER SET HAPPY = happylife.getHappypoint() WHERE USER_ID = happylife.getUserid()";
+					"UPDATE usr SET HAPPY = ? WHERE USER_ID = ?";
 			PreparedStatement pStmt = conn.prepareStatement(sql);
 
 			//INSERT文中の「？」に使用する値を設定しSQLを完成
-			//pStmt.setInt(1, happylife.getHappypoint());
-
+			pStmt.setInt(1, happylife.getHappypoint());
+			pStmt.setInt(2,happylife.getUserid());
 
 			//INSERT文の実行
 			int result = pStmt.executeUpdate();

@@ -25,8 +25,8 @@ public class LogoutServlet extends HttpServlet {
 		if(logout.equals("yes")) {
 
 			HttpSession session = request.getSession(true);
-			session.removeAttribute("happy");
-
+			//session.removeAttribute("happy");
+			session.invalidate();
 			response.sendRedirect("logout_kanryou.jsp");
 		}else {
 			response.sendRedirect("Product");

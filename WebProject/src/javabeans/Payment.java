@@ -1,6 +1,8 @@
 package javabeans;
 
-public class Payment {
+import java.io.Serializable;
+
+public class Payment implements Serializable{
 
 	private int sum;//購入金額！
 	private int change;//おつり

@@ -9,5 +9,9 @@ public class PostOrderMainDAOLogic {
 		omd.create(happylife);
 
 	}
+	public HappyLife poIdExecute (HappyLife happyLife) {
+		OrderMainDAO omd = new OrderMainDAO();
+		return omd.poIdCheck(happyLife);
+	}
 
 }

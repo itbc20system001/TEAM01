@@ -9,7 +9,7 @@ import javabeans.HappyLife;
 
 public class OrderDescDAO {
 	//データベース接続に使用する情報
-	private final String JDBC_URL = "";//未定
+	private final String JDBC_URL = "jdbc:mariadb://localhost/kohukudo";//未定
 	private final String DB_USER = "root";
 	private final String DB_PASS = "insource.2015it";
 
@@ -24,6 +24,11 @@ public class OrderDescDAO {
 
 	public boolean create(HappyLife happylife) {
 		//データベース接続
+		try {
+			Class.forName("org.mariadb.jdbc.Driver");//仮
+		} catch (ClassNotFoundException e1) {
+			e1.printStackTrace();
+		}
 		try (Connection conn = DriverManager.getConnection(
 				JDBC_URL, DB_USER, DB_PASS)) {
 
@@ -48,5 +53,6 @@ public class OrderDescDAO {
 		}
 		return true;
 	}
+
 
 }
