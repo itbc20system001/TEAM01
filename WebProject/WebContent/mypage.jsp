@@ -9,7 +9,7 @@
 <body>
 <ul>
 <li><a href=kounyurireki.jsp>購入履歴</a></li>
-<li><a href=kaiinjoho.jsp>会員情報</a></li>
+<li><a href=UserInfoGetServlet.java>会員情報</a></li>
 <li><a href=uranai.jsp>占い</a></li>
 </ul>
 </body>
