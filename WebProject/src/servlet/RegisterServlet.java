@@ -44,8 +44,12 @@ public class RegisterServlet extends HttpServlet {
 		reg.setO_address(request.getParameter("o_address"));
 		reg.setTel(request.getParameter("tel"));
 		reg.setEmail(request.getParameter("email"));
-		reg.setBirthday(request.getParameter("birthday"));
+		//reg.setBirthday(request.getParameter("birthday"));
 		reg.setPassword(request.getParameter("password"));
+		String year = request.getParameter("year");
+		String month = request.getParameter("month");
+		String day = request.getParameter("day");
+		reg.setBirthday(year+"-"+month+"-"+day);
 
 		//めんどくさくなったので先にKPのランダムを計算してからデータベースにぶち込む
 		HappyLife happyLife = new HappyLife();
