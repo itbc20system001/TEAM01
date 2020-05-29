@@ -5,6 +5,7 @@
 <head>
 <meta charset="UTF-8">
 <title>幸福堂</title>
+<link rel="stylesheet" href="kohukudo.css">
 </head>
 <body>
 <h1 style="text-align:center"><a href="top.jsp"><img src="image/kohukudo_logo.jpg" alt="kohukudo"></a></h1>
