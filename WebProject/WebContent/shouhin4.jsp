@@ -10,22 +10,7 @@
 <head>
 <meta charset="UTF-8">
 <title>信号に引っかからない</title>
-<link rel="stylesheet" href="kohukudo.css">
-<h1 style="text-align:center"><a href="top.jsp"><img src="image/kohukudo_logo_touka.png" alt="kohukudo"></a></h1>
-<nav class="nav">
-<ul>
-<li>ようこそ、<%=happyLife.getUsrName() %>さん</li>
-<li>所有KP:<%=happyLife.getHappypoint() %>KP</li>
-<li><a href="top.jsp">幸福堂TOP</a></li>
-<li><a href="cart.jsp">カート画面</a></li>
-<li><a href="kakushouhin.jsp">商品一覧画面</a></li>
-<li><a href="">ログアウト</a></li>
-</ul>
-</nav>
-<nav class="nav2">
-<ul>
-</ul>
-</nav>
+<jsp:include page="header.jsp"/>
 </head>
 <body>
   <table>
@@ -52,6 +37,7 @@
   <%
   	}
   %>
+  <jsp:include page="footer.jsp"/>
 </body>
 <script>
   var cartIn = function a() {
