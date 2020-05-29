@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>購入エラー</title>
+<title>幸福堂｜購入エラー</title>
 </head>
 <body>
 <p>幸福ポイントが不足しているため、商品を購入できませんでした。</p>

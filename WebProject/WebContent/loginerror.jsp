@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>ログイン失敗</title>
+<title>幸福堂｜ログイン失敗</title>
 </head>
 <body>
 <h1>ログイン時にエラーが発生しました。</h1>

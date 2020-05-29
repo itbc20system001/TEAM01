@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>マイページ</title>
+<title>幸福堂｜マイページ</title>
 </head>
 <body>
 <ul>

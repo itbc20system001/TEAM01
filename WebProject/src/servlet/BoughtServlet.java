@@ -33,25 +33,31 @@ public class BoughtServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");
-		//セッションスコープからhappy
-		HttpSession session = request.getSession();
-		HappyLife happy = (HappyLife) session.getAttribute("happy");
-		//なんでもよかったが今回はgetOrderDateがnullとなる場合のみdoPost
-		//tyuumon.jspで更新連打を防ぐ
-		if(happy.getOrderDate()==null) {
-			doPost(request,response);
-		}else {
+		try {
+			//セッションスコープからhappy
+			HttpSession session = request.getSession();
+			HappyLife happy = (HappyLife) session.getAttribute("happy");
+			//なんでもよかったが今回はgetOrderDateがnullとなる場合のみdoPost
+			//tyuumon.jspで更新連打を防ぐ
+			if (happy.getOrderDate() == null) {
+				doPost(request, response);
+			} else {
+				RequestDispatcher dispatcher = request.getRequestDispatcher("tyuumon.jsp");
+				dispatcher.forward(request, response);
+			}
+			/*		//セッションスコープ
+			HttpSession session = request.getSession();
+			HappyLife happyLife = (HappyLife) session.getAttribute("happy");
+
+			happyLife.getP_Buy_List().clear();//カート内商品全消去
+
 			RequestDispatcher dispatcher = request.getRequestDispatcher("tyuumon.jsp");
-			dispatcher.forward(request, response);
+			dispatcher.forward(request, response);*/
+		} catch (NullPointerException e) {
+			// TODO: handle exception
+			e.printStackTrace();
+			response.sendRedirect("index.html");
 		}
-		/*		//セッションスコープ
-		HttpSession session = request.getSession();
-		HappyLife happyLife = (HappyLife) session.getAttribute("happy");
-
-		happyLife.getP_Buy_List().clear();//カート内商品全消去
-
-		RequestDispatcher dispatcher = request.getRequestDispatcher("tyuumon.jsp");
-		dispatcher.forward(request, response);*/
 	}
 
 	/**

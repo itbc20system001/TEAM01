@@ -4,7 +4,7 @@
 <html lang="ja">
 <head>
 <meta charset="UTF-8">
-<title>新規会員登録</title>
+<title>幸福堂｜新規会員登録</title>
 </head>
 <body>
 <form action ="RegisterServlet" method="post">

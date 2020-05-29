@@ -27,22 +27,31 @@ public class CartServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		//購入金額を計算するロジックを呼ぶ処理
-		request.setCharacterEncoding("UTF-8");
-		HappyCalcLogic hcl = new HappyCalcLogic();
-		//Payment payment = hcl.buyCalc();
+		try {
+			//購入金額を計算するロジックを呼ぶ処理
+			request.setCharacterEncoding("UTF-8");
+			HappyCalcLogic hcl = new HappyCalcLogic();
+			//Payment payment = hcl.buyCalc();
+			//セッションからhappyとpaymentを呼び、カートに来るごとにpaymentを逐次計算
+			HttpSession session = request.getSession();
+			Payment payment = (Payment) session.getAttribute("payment");
+			HappyLife happyLife = (HappyLife) session.getAttribute("happy");
+			payment = hcl.buyCalc(happyLife);
+			//スコープpaymentを再定義
+			session.setAttribute("payment", payment);
 
-		//セッションからhappyとpaymentを呼び、カートに来るごとにpaymentを逐次計算
-		HttpSession session = request.getSession();
-		Payment payment = (Payment)session.getAttribute("payment");
-		HappyLife happyLife = (HappyLife)session.getAttribute("happy");
-		payment = hcl.buyCalc(happyLife);
-		//スコープpaymentを再定義
-		session.setAttribute("payment", payment);
+			System.out.println(payment.getChange());
+			//System.out.println(payment.);
 
-		request.setCharacterEncoding("UTF-8");
-		RequestDispatcher dispatcher =request.getRequestDispatcher("cart.jsp");
-		dispatcher.forward(request, response);
+			request.setCharacterEncoding("UTF-8");
+			RequestDispatcher dispatcher = request.getRequestDispatcher("cart.jsp");
+			dispatcher.forward(request, response);
+		} catch (NullPointerException e) {
+			// TODO: handle exception
+			e.printStackTrace();
+			RequestDispatcher dispatcher = request.getRequestDispatcher("top.jsp");
+			dispatcher.forward(request, response);
+		}
 	}
 
 	/**

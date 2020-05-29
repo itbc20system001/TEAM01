@@ -9,7 +9,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>並び始めたらすでに一番前にいる</title>
+<title>幸福堂｜並び始めたらすでに一番前にいる</title>
 <jsp:include page="header.jsp"/>
 </head>
 <body>

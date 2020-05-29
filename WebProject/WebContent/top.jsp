@@ -1,11 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-    
+
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<title>幸福堂</title>
+<title>幸福堂｜TOP</title>
 <link rel="stylesheet" href="kohukudo.css">
 <h1 style="text-align:center"><a href="top.jsp"><img src="image/kohukudo_logo_touka.png" alt="kohukudo"></a></h1>
 </head>

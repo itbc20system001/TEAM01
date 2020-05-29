@@ -15,7 +15,7 @@
 <title>カート</title>
 </head>
 <body>
-  <h1>カートの内容</h1>
+  <h1>幸福堂｜カートの内容</h1>
   <%
   	for (int i = 0; i < happyLife.getP_Buy_List().size(); i++) {
   %>
@@ -29,9 +29,12 @@
   	}
   %>
   <p></p>
-
+<%if(happyLife.getP_Buy_List().size()!=0){ %>
   <a href=BuyServlet>購入へ</a>
   <br>
+  <%}else{ %>
+  <p>カート内に商品がありません</p>
+  <%} %>
   <a href=Product>商品一覧へ</a>
 </body>
 <script>

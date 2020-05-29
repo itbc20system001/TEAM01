@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>ログアウト確認</title>
+<title>幸福堂｜ログアウト確認</title>
 </head>
 <body>
 ログアウトしますか？

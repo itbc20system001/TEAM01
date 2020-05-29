@@ -85,7 +85,7 @@ public class RegisterServlet extends HttpServlet {
 			}
 
 		}else {
-			happyLife.setMessage("同じメールアドレスが登録されています");
+			happyLife.setMessage("同じメールアドレスが登録されているか、何も入力されていません");
 			request.setCharacterEncoding("UTF-8");
 			RequestDispatcher dispatcher = request.getRequestDispatcher("touroku_error.jsp");
 			dispatcher.forward(request, response);

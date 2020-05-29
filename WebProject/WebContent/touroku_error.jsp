@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>会員登録エラー</title>
+<title>幸福堂｜会員登録エラー</title>
 </head>
 <body>
 <p>会員登録においてエラーがありました。申し訳ございませんが再度登録をお願いいたします。</p>

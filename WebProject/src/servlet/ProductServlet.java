@@ -42,9 +42,16 @@ public class ProductServlet extends HttpServlet {
 		//		session.setAttribute("happy", happyLife);
 
 
-		request.setCharacterEncoding("UTF-8");
-		RequestDispatcher dispatcher =request.getRequestDispatcher("kakushouhin.jsp");
-		dispatcher.forward(request, response);
+		try {
+			request.setCharacterEncoding("UTF-8");
+			RequestDispatcher dispatcher = request.getRequestDispatcher("kakushouhin.jsp");
+			dispatcher.forward(request, response);
+		} catch (NullPointerException e) {
+			// TODO: handle exception
+			e.printStackTrace();
+			RequestDispatcher dispatcher = request.getRequestDispatcher("top.jsp");
+			dispatcher.forward(request, response);
+		}
 
 	}
 

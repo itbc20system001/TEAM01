@@ -11,7 +11,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>最初からシャワーから温水が出る</title>
+<title>幸福堂｜最初からシャワーから温水が出る</title>
 <jsp:include page="header.jsp"/>
 </head>
 <body>

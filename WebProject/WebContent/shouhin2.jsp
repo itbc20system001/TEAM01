@@ -9,7 +9,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>勝手に見つけやすいところに移動するリモコン</title>
+<title>幸福堂｜勝手に見つけやすいところに移動するリモコン</title>
 <jsp:include page="header.jsp"/>
 </head>
 <body>
