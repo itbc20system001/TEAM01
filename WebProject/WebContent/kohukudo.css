@@ -57,3 +57,7 @@ nav a:active{
 	background-image: url(image/menu-bg1.png);
 	background-repeat: repeat-x;
 }
+.footer{
+	font-size:22px;
+	border-top:3px solid darkred;
+}
