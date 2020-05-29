@@ -8,7 +8,9 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
+import javabeans.HappyLife;
 import javabeans.Register;
 import model.RegisterLogic;
 
@@ -25,12 +27,17 @@ public class UserInfoGetServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
+		HttpSession session = request.getSession();
+		HappyLife happylife = (HappyLife) session.getAttribute("happy");
 		request.setCharacterEncoding("UTF-8");
 
 		//UsrDAOに処理を移してusrテーブルから会員情報をSELECT→Register.javaにセット
 		RegisterLogic rl = new RegisterLogic();
 		Register reg = new Register();
-		reg = rl.userInfoGetExcute(reg);
+
+		System.out.println(happylife.getUserid());
+
+		reg = rl.userInfoGetExcute(reg, happylife);
 		request.setAttribute("register", reg);
 
 		//"kaiinjoho.jsp"へフォワード

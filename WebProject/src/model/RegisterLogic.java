@@ -75,8 +75,8 @@ public class RegisterLogic {
 		}
 	}
 
-	public Register userInfoGetExcute(Register reg) {
+	public Register userInfoGetExcute(Register reg, HappyLife happylife) {
 		UsrDAO dao = new UsrDAO();
-		return dao.findUserInfo(reg);
+		return dao.findUserInfo(reg, happylife);
 	}
 }
