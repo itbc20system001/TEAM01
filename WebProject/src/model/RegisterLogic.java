@@ -10,10 +10,11 @@ public class RegisterLogic {
 		UsrDAO dao = new UsrDAO();
 		return dao.create(reg);//
 	}
-	public boolean kpExcute(HappyLife happyLife,Register reg) {
+
+	public boolean kpExcute(HappyLife happyLife, Register reg) {
 		//データベースの成否チェック
 		UsrDAO dao = new UsrDAO();
-		return dao.create(happyLife,reg);//
+		return dao.create(happyLife, reg);//
 	}
 
 	public boolean emailExecute(Register reg) {
@@ -72,5 +73,10 @@ public class RegisterLogic {
 			return true;
 
 		}
+	}
+
+	public Register userInfoGetExcute(Register reg) {
+		UsrDAO dao = new UsrDAO();
+		return dao.findUserInfo(reg);
 	}
 }
