@@ -98,7 +98,7 @@ public class BoughtServlet extends HttpServlet {
 
 			//ランダムでポイントキャッシュバック
 			HappyCalcLogic hcl = new HappyCalcLogic();
-			int point = hcl.cashBack();
+			int point = (int)hcl.cashBack(payment);
 			int zankin = payment.getChange()+point;
 
 			//残りの幸福ポイント(おつり)をusrテーブルに登録
