@@ -52,13 +52,28 @@ public class HappyCalcLogic {
 	}
 
 	//購入後のポイントキャッシュバック
-	public int cashBack() {
-		int point = (int) (Math.random()*100);
+	public  double cashBack(Payment p) {
+		//購入金額を取得
+		double point = 0;
+		int sum1 = p.getSum();
+		if(sum1<=24150 || sum1 > 15000) {
+			return point = sum1 * 0.6;
+		}else if (sum1 <= 15000 || sum1 > 10000) {
+			return point = sum1 * 0.5;
+		}else if (sum1 <= 10000 || sum1 > 5000) {
+			return point = sum1 * 0.4;
+		}else if(sum1 <= 5000 || sum1 > 3000) {
+			return point = sum1 * 0.3;
+		}else if(sum1 <= 3000 || sum1 > 1000) {
+			return point = sum1 * 0.2;
+		}else {
+			System.out.println(sum1*0.1);
+			return point = sum1 * 0.1;
+		}
 
-		return point;
 	}
-	//占い
 
+	//占い
 	public HappyLife uranai(HappyLife happyLife) {
 		int kekka = (int)(Math.random()*4)+1;
 		int KP = 0;
