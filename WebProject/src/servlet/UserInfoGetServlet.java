@@ -17,7 +17,7 @@ import model.RegisterLogic;
 /**
  * Servlet implementation class UserInfoGet
  */
-@WebServlet("/UserInfoGetServlet")
+@WebServlet("/UserInfo")
 public class UserInfoGetServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
@@ -27,23 +27,25 @@ public class UserInfoGetServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
-		HttpSession session = request.getSession();
-		HappyLife happylife = (HappyLife) session.getAttribute("happy");
-		request.setCharacterEncoding("UTF-8");
-
-		//UsrDAOに処理を移してusrテーブルから会員情報をSELECT→Register.javaにセット
-		RegisterLogic rl = new RegisterLogic();
-		Register reg = new Register();
-
-		System.out.println(happylife.getUserid());
-
-		reg = rl.userInfoGetExcute(reg, happylife);
-		request.setAttribute("register", reg);
-
-		//"kaiinjoho.jsp"へフォワード
-		request.setCharacterEncoding("UTF-8");
-		RequestDispatcher dispatcher = request.getRequestDispatcher("kaiinjoho.jsp");
-		dispatcher.forward(request, response);
+		try {
+			HttpSession session = request.getSession();
+			HappyLife happylife = (HappyLife) session.getAttribute("happy");
+			request.setCharacterEncoding("UTF-8");
+			//UsrDAOに処理を移してusrテーブルから会員情報をSELECT→Register.javaにセット
+			RegisterLogic rl = new RegisterLogic();
+			Register reg = new Register();
+			System.out.println(happylife.getUserid());
+			reg = rl.userInfoGetExcute(reg, happylife);
+			request.setAttribute("register", reg);
+			//"kaiinjoho.jsp"へフォワード
+			request.setCharacterEncoding("UTF-8");
+			RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/kaiinjoho.jsp");
+			dispatcher.forward(request, response);
+		} catch (Exception e) {
+			// TODO: handle exception
+			e.printStackTrace();
+			response.sendRedirect("TOP");
+		}
 	}
 
 	/**

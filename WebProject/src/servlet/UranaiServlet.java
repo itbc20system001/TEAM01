@@ -15,13 +15,22 @@ import model.BalanceRegisterLogic;
 import model.HappyCalcLogic;
 
 
-@WebServlet("/UranaiServlet")
+@WebServlet("/Uranai")
 public class UranaiServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private HappyLife HappyLife;
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		try {
+			request.setCharacterEncoding("UTF-8");
+			RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/uranai.jsp");
+			dispatcher.forward(request, response);
+		} catch (Exception e) {
+			// TODO: handle exception
+			e.printStackTrace();
+			response.sendRedirect("TOP");
+		}
 	}
 
 	/**
@@ -40,7 +49,7 @@ public class UranaiServlet extends HttpServlet {
 				brl.execute(happy);
 
 				//その内容をフォワードorリダイレクトuranai.jsp
-				RequestDispatcher dispatcher =request.getRequestDispatcher("uranai.jsp");
+				RequestDispatcher dispatcher =request.getRequestDispatcher("/WEB-INF/jsp/uranai.jsp");
 				dispatcher.forward(request, response);
 	}
 

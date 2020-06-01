@@ -44,13 +44,12 @@ public class ProductServlet extends HttpServlet {
 
 		try {
 			request.setCharacterEncoding("UTF-8");
-			RequestDispatcher dispatcher = request.getRequestDispatcher("kakushouhin.jsp");
+			RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/kakushouhin.jsp");
 			dispatcher.forward(request, response);
-		} catch (NullPointerException e) {
+		} catch (Exception e) {
 			// TODO: handle exception
 			e.printStackTrace();
-			RequestDispatcher dispatcher = request.getRequestDispatcher("top.jsp");
-			dispatcher.forward(request, response);
+			response.sendRedirect("TOP");
 		}
 
 	}
@@ -63,6 +62,10 @@ public class ProductServlet extends HttpServlet {
 
 		request.setCharacterEncoding("UTF-8");
 		String name=request.getParameter("購入");
+		String name2 = name.replaceAll("[^0-9]", "");
+		//int a= Integer.parseInt(s);
+		//System.out.println(name);
+
 		String path="";
 		HttpSession session = request.getSession();
 		HappyLife happyLife =(HappyLife)session.getAttribute("happy");
@@ -71,24 +74,19 @@ public class ProductServlet extends HttpServlet {
 		ArrayList<Product> p_Buy_List = happyLife.getP_Buy_List();
 
 		if(name.equals(productList.get(0).getP_name()+"を購入")) {
-			path="shouhin1.jsp";
 			p_Buy_List.add(productList.get(0));
-
 		}else if(name.equals(productList.get(1).getP_name()+"を購入")) {
-			path="shouhin2.jsp";
 			p_Buy_List.add(productList.get(1));
 		}else if(name.equals(productList.get(2).getP_name()+"を購入")) {
-			path="shouhin3.jsp";
 			p_Buy_List.add(productList.get(2));
 		}else if(name.equals(productList.get(3).getP_name()+"を購入")) {
-			path="shouhin4.jsp";
 			p_Buy_List.add(productList.get(3));
 		}
 		p_Buy_List = new ArrayList<Product>(new LinkedHashSet<>(p_Buy_List));
 		happyLife.setP_Buy_List(p_Buy_List);
-		//RequestDispatcher dispatcher =request.getRequestDispatcher(path);
+		//RequestDispatcher dispatcher =request.getRequestDispatcher("shouhin.jsp");
 		//dispatcher.forward(request, response);
-		response.sendRedirect(path);
+		response.sendRedirect("Shouhin");
 	}
 
 }

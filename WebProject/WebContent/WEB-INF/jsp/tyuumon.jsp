@@ -13,7 +13,9 @@
 <title>幸福堂｜注文完了</title>
 </head>
 <body>
-
+  <header>
+    <jsp:include page="/WEB-INF/jsp/header.jsp" />
+  </header>
   <h2>注文が完了しました</h2>
   <p><%=payment.getPoint()%>ポイント獲得！！！
   </p>
@@ -25,7 +27,9 @@
   </p>
   <h3>あなたに幸福が訪れますように...</h3>
 
-  <a href="kakushouhin.jsp">商品一覧へ</a>
-
+  <a href="Product">商品一覧へ</a>
+  <footer>
+    <jsp:include page="/WEB-INF/jsp/footer.jsp" />
+  </footer>
 </body>
 </html>

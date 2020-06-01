@@ -3,6 +3,7 @@ package servlet;
 import java.io.IOException;
 import java.util.ArrayList;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -20,13 +21,24 @@ import model.ProductListLogic;
 /**
  * Servlet implementation class LoginServlet
  */
-@WebServlet("/LoginServlet")
+@WebServlet("/Login")
 public class LoginServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
+
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+
+		//"login.jsp"へフォワード処理
+		request.setCharacterEncoding("UTF-8");
+		RequestDispatcher dispatcher = request.getRequestDispatcher("login.jsp");
+		dispatcher.forward(request, response);
+
+	}
+
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		request.setCharacterEncoding("UTF-8");
@@ -40,8 +52,12 @@ public class LoginServlet extends HttpServlet {
 		String path="";
 		boolean isLogin =loginLogic.execute(login);
 
+		if(login.getEmail().equals("")||login.getPass().equals("")) {
+			isLogin=false;
+		}
+
 		if(isLogin) {
-			path= "/kohukudo/Product";
+			path= "Product";
 			//セッションスコープに3つを宣言
 			HttpSession session = request.getSession();
 			Payment payment = new Payment();
@@ -53,13 +69,15 @@ public class LoginServlet extends HttpServlet {
 			ProductListLogic productListLogic = new ProductListLogic();
 			productList = productListLogic.execute(productList);
 			session.setAttribute("product", productList);
+			response.sendRedirect(path);
 		}else {
-			path= "loginerror.jsp";
+			path= "/WEB-INF/jsp/loginerror.jsp";
+			RequestDispatcher dispatcher = request.getRequestDispatcher(path);
+			dispatcher.forward(request,response);
 		}
 
 
-		//RequestDispatcher dispatcher = request.getRequestDispatcher("Product");
-		//dispatcher.forward(request,response);
-		response.sendRedirect(path);
+
+
 	}
 }

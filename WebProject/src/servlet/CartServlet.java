@@ -19,7 +19,7 @@ import model.HappyCalcLogic;
 /**
  * Servlet implementation class CartServlet
  */
-@WebServlet("/CartServlet")
+@WebServlet("/Cart")
 public class CartServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
@@ -40,17 +40,16 @@ public class CartServlet extends HttpServlet {
 			//スコープpaymentを再定義
 			session.setAttribute("payment", payment);
 
-			System.out.println(payment.getChange());
+			//System.out.println(payment.getChange());
 			//System.out.println(payment.);
 
 			request.setCharacterEncoding("UTF-8");
-			RequestDispatcher dispatcher = request.getRequestDispatcher("cart.jsp");
+			RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/cart.jsp");
 			dispatcher.forward(request, response);
-		} catch (NullPointerException e) {
+		} catch (Exception e) {
 			// TODO: handle exception
 			e.printStackTrace();
-			RequestDispatcher dispatcher = request.getRequestDispatcher("top.jsp");
-			dispatcher.forward(request, response);
+			response.sendRedirect("TOP");
 		}
 	}
 
