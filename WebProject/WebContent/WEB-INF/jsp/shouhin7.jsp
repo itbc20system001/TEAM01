@@ -20,7 +20,7 @@
     <th>5秒で寝れる<br><%=productList.get(6).getPrice()%>KP
     </th>
     <tr>
-      <td><img src="image/suimin_man.png" width="300" height="300" alt="shouhin7">
+      <td><img src="image/5秒で睡眠.png" width="300" height="300" alt="shouhin7">
       <td>
       <td>「「もう寝なければいけないのに全然寝付けない...」<br>
 
