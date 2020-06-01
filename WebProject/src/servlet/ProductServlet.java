@@ -81,7 +81,27 @@ public class ProductServlet extends HttpServlet {
 			p_Buy_List.add(productList.get(2));
 		}else if(name.equals(productList.get(3).getP_name()+"を購入")) {
 			p_Buy_List.add(productList.get(3));
+		}else if(name.equals(productList.get(4).getP_name()+"を購入")) {
+			p_Buy_List.add(productList.get(4));
+		}else if(name.equals(productList.get(5).getP_name()+"を購入")) {
+			p_Buy_List.add(productList.get(5));
+		}else if(name.equals(productList.get(6).getP_name()+"を購入")) {
+			p_Buy_List.add(productList.get(6));
+		}else if(name.equals(productList.get(7).getP_name()+"を購入")) {
+			p_Buy_List.add(productList.get(7));
+		}else if(name.equals(productList.get(8).getP_name()+"を購入")) {
+			p_Buy_List.add(productList.get(8));
+		}else if(name.equals(productList.get(9).getP_name()+"を購入")) {
+			p_Buy_List.add(productList.get(9));
+		}else if(name.equals(productList.get(10).getP_name()+"を購入")) {
+			p_Buy_List.add(productList.get(10));
+		}else if(name.equals(productList.get(11).getP_name()+"を購入")) {
+			p_Buy_List.add(productList.get(11));
+		}else if(name.equals(productList.get(12).getP_name()+"を購入")) {
+			p_Buy_List.add(productList.get(12));
 		}
+		
+		
 		p_Buy_List = new ArrayList<Product>(new LinkedHashSet<>(p_Buy_List));
 		happyLife.setP_Buy_List(p_Buy_List);
 		//RequestDispatcher dispatcher =request.getRequestDispatcher("shouhin.jsp");

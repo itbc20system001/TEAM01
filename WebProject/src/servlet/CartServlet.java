@@ -74,6 +74,24 @@ public class CartServlet extends HttpServlet {
 			happyLife.getP_Buy_List().remove(productList.get(2));
 		}else if(cartOutName.equals("信号をカートから削除")) {
 			happyLife.getP_Buy_List().remove(productList.get(3));
+		}else if(cartOutName.equals("退席判明をカートから削除")) {
+			happyLife.getP_Buy_List().remove(productList.get(4));
+		}else if(cartOutName.equals("ページジャンプをカートから削除")) {
+			happyLife.getP_Buy_List().remove(productList.get(5));
+		}else if(cartOutName.equals("５秒で睡眠をカートから削除")) {
+			happyLife.getP_Buy_List().remove(productList.get(6));
+		}else if(cartOutName.equals("不眠をカートから削除")) {
+			happyLife.getP_Buy_List().remove(productList.get(7));
+		}else if(cartOutName.equals("ラベルをカートから削除")) {
+			happyLife.getP_Buy_List().remove(productList.get(8));
+		}else if(cartOutName.equals("静電気をカートから削除")) {
+			happyLife.getP_Buy_List().remove(productList.get(9));
+		}else if(cartOutName.equals("自販をカートから削除")) {
+			happyLife.getP_Buy_List().remove(productList.get(10));
+		}else if(cartOutName.equals("花粉症をカートから削除")) {
+			happyLife.getP_Buy_List().remove(productList.get(11));
+		}else if(cartOutName.equals("じゃんけん必勝をカートから削除")) {
+			happyLife.getP_Buy_List().remove(productList.get(12));
 		}
 		doGet(request, response);
 	}
