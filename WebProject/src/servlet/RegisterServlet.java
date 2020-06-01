@@ -14,7 +14,7 @@ import javabeans.Register;
 import model.HappyGive;
 import model.RegisterLogic;
 
-@WebServlet("/RegisterServlet")
+@WebServlet("/Register")
 public class RegisterServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
@@ -59,7 +59,6 @@ public class RegisterServlet extends HttpServlet {
 		//ログイン処理
 		RegisterLogic bo = new RegisterLogic();
 		boolean isEmailResult = bo.emailExecute(reg);//既に同じemailがないかチェック
-		System.out.println(isEmailResult);
 		boolean dbResult=false;
 		boolean inputResult=false;
 		if(!isEmailResult) {
@@ -70,24 +69,24 @@ public class RegisterServlet extends HttpServlet {
 			//ログイン処理の成否によって条件を分岐
 			if (dbResult && inputResult) { //成功時
 				request.setCharacterEncoding("UTF-8");
-				RequestDispatcher dispatcher = request.getRequestDispatcher("tourokucomplete.jsp");
+				RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/tourokucomplete.jsp");
 				dispatcher.forward(request, response);
 			} else if(!dbResult && inputResult){ //失敗時
 				happyLife.setMessage("生年月日の入力が間違っています");
 				request.setCharacterEncoding("UTF-8");
-				RequestDispatcher dispatcher = request.getRequestDispatcher("touroku_error.jsp");
+				RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/touroku_error.jsp");
 				dispatcher.forward(request, response);
 			}else{
 				happyLife.setMessage("入力箇所に洩れがあります");
 				request.setCharacterEncoding("UTF-8");
-				RequestDispatcher dispatcher = request.getRequestDispatcher("touroku_error.jsp");
+				RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/touroku_error.jsp");
 				dispatcher.forward(request, response);
 			}
 
 		}else {
 			happyLife.setMessage("同じメールアドレスが登録されているか、何も入力されていません");
 			request.setCharacterEncoding("UTF-8");
-			RequestDispatcher dispatcher = request.getRequestDispatcher("touroku_error.jsp");
+			RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/touroku_error.jsp");
 			dispatcher.forward(request, response);
 		}
 

@@ -7,7 +7,11 @@
 <title>幸福堂｜新規会員登録</title>
 </head>
 <body>
-<form action ="RegisterServlet" method="post">
+<header>
+<link rel="stylesheet" href="kohukudo.css">
+<h1 style="text-align:center"><a href="TOP"><img src="image/kohukudo_logo_touka.png" alt="kohukudo"></a></h1>
+</header>
+<form action ="Register" method="post">
 利用者名（氏）<br><input type="text" name="l_name"><br><br>
 利用者名（名）<br><input type="text" name="f_name"><br><br>
 利用者名（氏カナ）<br><input type="text" name="l_name_kana"><br><br>
@@ -120,6 +124,8 @@ Eメールアドレス<br><input type="text" name="email"><br><br>
 パスワード<br><input type="password" name="password"><br><br>
 <input type="submit" value ="送信">
 </form>
-
+<footer>
+<jsp:include page="/WEB-INF/jsp/footer.jsp" />
+</footer>
 </body>
 </html>

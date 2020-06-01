@@ -29,7 +29,9 @@
 <br>
 エアコン、テレビ、果ては車のキーまで。<br>
 <br>
-継続しての購入をお勧めしたい商品です。<br><!--  <%=productList.get(1).getPrice()%>KP -->
+継続しての購入をお勧めしたい商品です。<br>
+</td>
+<!--  <%=productList.get(1).getPrice()%>KP -->
     <tr>
   </table>
 

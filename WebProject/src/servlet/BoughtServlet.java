@@ -23,7 +23,7 @@ import model.PostOrderMainDAOLogic;
 /**
  * Servlet implementation class BoughtServlet
  */
-@WebServlet("/BoughtServlet")
+@WebServlet("/Bought")
 public class BoughtServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
@@ -42,7 +42,7 @@ public class BoughtServlet extends HttpServlet {
 			if (happy.getOrderDate() == null) {
 				doPost(request, response);
 			} else {
-				RequestDispatcher dispatcher = request.getRequestDispatcher("tyuumon.jsp");
+				RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/tyuumon.jsp");
 				dispatcher.forward(request, response);
 			}
 			/*		//セッションスコープ
@@ -53,10 +53,10 @@ public class BoughtServlet extends HttpServlet {
 
 			RequestDispatcher dispatcher = request.getRequestDispatcher("tyuumon.jsp");
 			dispatcher.forward(request, response);*/
-		} catch (NullPointerException e) {
+		} catch (Exception e) {
 			// TODO: handle exception
 			e.printStackTrace();
-			response.sendRedirect("index.html");
+			response.sendRedirect("TOP");
 		}
 	}
 
@@ -110,11 +110,11 @@ public class BoughtServlet extends HttpServlet {
 
 			//注文完了画面にフォワード
 			happy.getP_Buy_List().clear();//カート内商品全消去
-			RequestDispatcher dispatcher =request.getRequestDispatcher("tyuumon.jsp");
+			RequestDispatcher dispatcher =request.getRequestDispatcher("/WEB-INF/jsp/tyuumon.jsp");
 			dispatcher.forward(request, response);
 
 		}else {//エラー画面にフォワード
-			RequestDispatcher dispatcher =request.getRequestDispatcher("kounyuerror.jsp");
+			RequestDispatcher dispatcher =request.getRequestDispatcher("/WEB-INF/jsp/kounyuerror.jsp");
 			dispatcher.forward(request, response);
 		}
 
