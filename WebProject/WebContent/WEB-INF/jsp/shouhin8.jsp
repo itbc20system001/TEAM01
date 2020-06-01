@@ -19,7 +19,7 @@
     <th>眠らなくても疲れない<br><%=productList.get(7).getPrice()%>KP
     </th>
     <tr>
-      <td><img src="image/睡眠不要.png" width="300" height="300" alt="shouhin5">
+      <td><img src="image/不眠.png" width="300" height="300" alt="shouhin5">
       <td>
       <td>「やっと課題が終わったけれど今から寝たら遅刻が確定する…。」<br>
 <br>

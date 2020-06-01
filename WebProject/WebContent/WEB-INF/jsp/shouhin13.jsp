@@ -19,7 +19,7 @@
     <th>じゃんけん必勝<br><%=productList.get(12).getPrice()%>KP
     </th>
     <tr>
-      <td><img src="image/ラベル.png" width="300" height="300" alt="shouhin5">
+      <td><img src="image/じゃんけん必勝.png" width="300" height="300" alt="shouhin5">
       <td>
       <td>「あそこでじゃんけんに勝ってればなあ。」<br>
 <br>
