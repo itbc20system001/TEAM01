@@ -8,6 +8,7 @@ import java.util.ArrayList;
 public class HappyLife implements Serializable {
 
 	private int happypoint;//KP!
+	private int KP;//占いによって増えたKP
 	private int price;//値段
 	private int productid;//p_idを入れる予定
 	private ArrayList<Product> p_Buy_List = new ArrayList<Product>();
@@ -99,5 +100,13 @@ public class HappyLife implements Serializable {
 
 	public void setMessage(String message) {
 		this.message = message;
+	}
+
+	public int getKP() {
+		return KP;
+	}
+
+	public void setKP(int kP) {
+		KP = kP;
 	}
 }

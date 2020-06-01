@@ -1,8 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ page import="javabeans.*"%>
 <%
-	HappyLife happyLife = (HappyLife) session.getAttribute("happy");
+	Integer kp = (Integer) request.getAttribute("kp");
+    HappyLife happyLife = (HappyLife) session.getAttribute("happy");
 %>
+
 
 <!DOCTYPE html>
 <html>
@@ -19,10 +21,17 @@
   </form>
   <h1>※何回でも挑戦できます</h1>
   <h2>
-    あなたは<%=happyLife.getMessage()%>です
+  <%if(happyLife.getMessage() == null){
+
+	  }else {%>
+	    <%= happyLife.getMessage() %>!<br>
+    	<%= kp %>KP!<br>
+    	現在の幸福ポイントは<%=happyLife.getHappypoint()%>KPです！<br>
+    <% }%>
+
+
+
   </h2>
-  <h3><%=happyLife.getHappypoint()%>KP獲得しました！
-  </h3>
   <p>
     <a href=MyPage>マイページへ戻る</a>
   </p>

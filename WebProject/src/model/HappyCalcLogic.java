@@ -61,7 +61,7 @@ public class HappyCalcLogic {
 
 	public HappyLife uranai(HappyLife happyLife) {
 		int kekka = (int)(Math.random()*4)+1;
-		int KP =  happyLife.getHappypoint();
+		int KP = 0;
 		if(kekka > 1) {
 			//凶
 			//現在持っているKPに－20
@@ -85,7 +85,7 @@ public class HappyCalcLogic {
 			KP+=20;
 		}
 		System.out.println(happyLife.getMessage());
-		happyLife.setHappypoint(KP);
+		happyLife.setKP(KP);
 		return happyLife;
 	}
 
