@@ -27,19 +27,21 @@
 <a href="Logout">ログアウト</a>
 </header> --%>
   <table align="center">
+  <% for(int j = 0; j < productList.size(); j+=3){ %>
     <tr>
       <%
-      	for (int i = 0; i < productList.size(); i++) {
+      	for (int i = j; i < productList.size(); i++) {
       %>
       <th><%=productList.get(i).getP_name()%><br><%=productList.get(i).getPrice()%>KP</th>
-      <%
+
+      <% if(i%3==2) break;
       	}
       %>
     </tr>
 
     <tr>
       <%
-      	for (int i = 0; i < productList.size(); i++) {
+      	for (int i = j; i < productList.size(); i++) {
       %>
       <%-- <td><a href="/WEB-INF/jsp/shouhin<%=i+1 %>.jsp"><img src="image/<%=productList.get(i).getP_name() %>.png" width="200" height="200" alt="shouhin<%=i+1%>"></a></td>
  --%>
@@ -50,10 +52,14 @@
             <img src="image/<%=productList.get(i).getP_name()%>.png" width="200" height="200" alt="shouhin<%=i%>">
           </button>
         </form></td>
-      <%
+
+      <% if(i%3==2) break;
       	}
       %>
     </tr>
+     <%
+      }
+    %>
   </table>
   <footer>
     <jsp:include page="/WEB-INF/jsp/footer.jsp" />
