@@ -26,7 +26,7 @@ public class UranaiServlet extends HttpServlet {
 			request.setCharacterEncoding("UTF-8");
 			RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/uranai.jsp");
 			dispatcher.forward(request, response);
-		} catch (Exception e) {
+		} catch (IOException e) {
 			// TODO: handle exception
 			e.printStackTrace();
 			response.sendRedirect("TOP");
@@ -40,9 +40,15 @@ public class UranaiServlet extends HttpServlet {
 		//占いから呼び出し
 				HttpSession session = request.getSession();
 				HappyLife happy = (HappyLife) session.getAttribute("happy");
-				//happycalclogicインスタンスに引数としてhappyスコープを渡して計算してその結果をhappyにセット
+
+				//happycalclogicインスタンスに引数としてhappyスコープを渡して計算前のKPをhappyにセット
 				HappyCalcLogic hcl = new HappyCalcLogic();
-				happy= hcl.uranai(happy);
+				happy = hcl.uranai(happy);
+
+				//リクエストスコープで計算前のKPを送る
+				request.setAttribute("kp", happy.getKP());
+				//セッションスコープで計算後のKPを送る
+				happy.setHappypoint(happy.getHappypoint()+happy.getKP());
 
 				//返ってきた計算結果をbalanceregisterlogicを使用してデータベース書き換え
 				BalanceRegisterLogic brl = new BalanceRegisterLogic();
@@ -52,5 +58,6 @@ public class UranaiServlet extends HttpServlet {
 				RequestDispatcher dispatcher =request.getRequestDispatcher("/WEB-INF/jsp/uranai.jsp");
 				dispatcher.forward(request, response);
 	}
+
 
 }
