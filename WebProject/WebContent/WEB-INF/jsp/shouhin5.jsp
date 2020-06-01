@@ -20,7 +20,7 @@
     <th>座っている人の降りる駅がわかる<br><%=productList.get(4).getPrice()%>KP
     </th>
     <tr>
-      <td><img src="image/train_kousya_man.png" width="300" height="300" alt="shouhin5">
+      <td><img src="image/退席判明.png" width="300" height="300" alt="shouhin5">
       <td>
       <td>「つらい鼻水、鼻づまり、くしゃみ、目のかゆみ...」<br>
 <br>

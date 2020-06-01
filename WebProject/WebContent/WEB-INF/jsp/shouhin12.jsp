@@ -20,7 +20,7 @@
     <th>花粉症の症状がなくなる<br><%=productList.get(11).getPrice()%>KP
     </th>
     <tr>
-      <td><img src="image/kafun_megane.png" width="300" height="300" alt="shouhin7">
+      <td><img src="image/花粉症.png" width="300" height="300" alt="shouhin7">
       <td>
       <td>「「もう寝なければいけないのに全然寝付けない...」<br>
 <br>

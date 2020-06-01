@@ -20,7 +20,7 @@
     <th>目当てのページが一発で開ける<br><%=productList.get(5).getPrice()%>KP
     </th>
     <tr>
-      <td><img src="image/book_open_yoko.png" width="300" height="300" alt="shouhin6">
+      <td><img src="image/ページジャンプ.png" width="300" height="300" alt="shouhin6">
       <td>
       <td>「あれ？この単語テキストの何ページに書いてあったっけ？」<br>
 <br>
