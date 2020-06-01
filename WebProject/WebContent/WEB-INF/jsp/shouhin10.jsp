@@ -14,11 +14,11 @@
 </head>
 <body>
   <table>
-    <th>静電気がなくなる<br> <%=productList.get(10).getPrice()%> KP
+    <th>静電気が「バチッ！」とこない<br> <%=productList.get(10).getPrice()%> KP
     </th>
     <tr>
       <td><img src="image/静電気.png" width="300" height="300" alt="shouhin1">
-      <td>
+      <td>冬場になるとおこる「バチッ！」<br>
       <td>
 冬場になるとおこる「バチッ！」<br>
 <br>
