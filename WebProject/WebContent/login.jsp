@@ -9,9 +9,8 @@
 hr {
 	border-color:darkred;
 }
-
 td {
-	padding: 4px;
+  padding: 4px;
 }
 </style>
 </head>

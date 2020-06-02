@@ -12,7 +12,7 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <link rel="stylesheet" href="/kohukudo/kohukudo.css">
-<h1 style="text-align:center"><a href="TOP"><img src="image/headerimage/幸福堂ロゴ.png" alt="kohukudo"></a></h1>
+<h1 style="text-align:center"><a href="TOP"><img src="image/headerimage/幸福堂ロゴ_header.png" alt="kohukudo"></a></h1>
 <nav class="nav">
 <ul>
 <li>ようこそ、<%=happyLife.getUsrName() %>さん</li>
