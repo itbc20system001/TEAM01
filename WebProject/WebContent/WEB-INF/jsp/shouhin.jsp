@@ -14,6 +14,17 @@
 <head>
 <meta charset="UTF-8">
 <title>幸福堂｜商品詳細</title>
+<style type="text/css">
+td {
+	padding: 8px;
+}
+
+td.text:first-letter {
+	font-size: 3em;
+	font-weight: bold;
+	color: black;
+}
+</style>
 </head>
 <body>
   <header>
@@ -23,7 +34,7 @@
     <th><%=txt.PrintTitle(happyLife.getProductid())%><br><%=productList.get(happyLife.getProductid()).getPrice()%>KP</th>
     <tr>
       <td><img src="image/<%=productList.get(happyLife.getProductid()).getP_name()%>.png" width="300" height="300" alt="shouhin1">
-      <td><%=txt.PrintMain(happyLife.getProductid())%>
+      <td class="text"><%=txt.PrintMain(happyLife.getProductid())%></td>
     <tr>
   </table>
 
