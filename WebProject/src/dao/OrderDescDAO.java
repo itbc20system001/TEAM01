@@ -3,7 +3,9 @@ package dao;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 import javabeans.HappyLife;
 
@@ -54,5 +56,35 @@ public class OrderDescDAO {
 		return true;
 	}
 
+	public ArrayList<HappyLife> getDescOrder (ArrayList<HappyLife> ordered,int i) {
+		ArrayList<Integer> ordered_List=new ArrayList<Integer>();
 
+		try {
+			Class.forName("org.mariadb.jdbc.Driver");
+		} catch (ClassNotFoundException e1) {
+			// TODO 自動生成された catch ブロック
+			e1.printStackTrace();
+		}
+
+
+		try(Connection conn = DriverManager.getConnection(JDBC_URL,DB_USER,DB_PASS)){
+
+			String sql = "select p_id from order_desc where po_id = ?";
+			PreparedStatement pStmt = conn.prepareStatement(sql);
+			pStmt.setInt(1,ordered.get(i).getPo_id());
+
+			ResultSet rs = pStmt.executeQuery();
+			while(rs.next()) {
+				int p_id = rs.getInt("p_id");
+				ordered_List.add(p_id);
+
+			}
+			ordered.get(i).setOrdered_List(ordered_List);
+
+		}catch(SQLException e) {
+			e.printStackTrace();
+			return null;
+		}
+		return ordered;
+	}
 }
