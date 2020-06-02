@@ -48,16 +48,16 @@ nav a:active{
 .nav ul{
 	margin: 0 0 0 0;
 	padding: 20px 10px 15px 20px;
-	background-image: url(image/menu-bg1.png);
-	background-repeat: repeat-x;
+	border-top:3px solid darkred;
 }
 .nav2 ul{
 	margin: 0 0 0 0;
 	padding: 20px 10px 15px 20px;
-	background-image: url(image/menu-bg1.png);
-	background-repeat: repeat-x;
+	border-top:3px solid darkred;
 }
 .footer{
 	font-size:22px;
-	border-top:3px solid darkred;
+	padding: 10px 5px 5px 5px;
+	background-image: url(image/headerimage/コウフク.png);
+	background-repeat: repeat-x;
 }
