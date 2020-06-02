@@ -21,7 +21,7 @@ if(happyLife.getUsrName()!=null){%>
 }catch(Exception e){
   e.printStackTrace();%>
 <link rel="stylesheet" href="/kohukudo/kohukudo.css">
-<h1 style="text-align:center"><a href="TOP"><img src="image/kohukudo_logo_touka.png" alt="kohukudo"></a></h1>
+<h1 style="text-align:center"><a href="TOP"><img src="image/headerimage/幸福堂ロゴ_new.png" alt="kohukudo"></a></h1>
 
   <% }
 %>
