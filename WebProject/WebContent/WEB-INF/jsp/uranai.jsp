@@ -23,11 +23,12 @@
   <h2>
   <%if(happyLife.getMessage() == null){
 
-	  }else {%>
+	  }else { if(kp != null){ %>
+
 	    <%= happyLife.getMessage() %>!<br>
-    	<%= kp %>KP!<br>
+    	<%= kp %>KP<br>
     	現在の幸福ポイントは<%=happyLife.getHappypoint()%>KPです！<br>
-    <% }%>
+    <% } }%>
 
 
 
