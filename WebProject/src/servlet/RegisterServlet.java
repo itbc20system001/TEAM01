@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 import javabeans.HappyLife;
 import javabeans.Register;
 import model.HappyGive;
+import model.LoginLogic;
 import model.RegisterLogic;
 
 @WebServlet("/Register")
@@ -69,6 +70,9 @@ public class RegisterServlet extends HttpServlet {
 			//ログイン処理の成否によって条件を分岐
 			if (dbResult && inputResult) { //成功時
 				request.setCharacterEncoding("UTF-8");
+				LoginLogic loginLogic = new LoginLogic();
+				int id = loginLogic.LoginUserCheckExecute(reg);
+				loginLogic.LoginSetExecute(id);
 				RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/tourokucomplete.jsp");
 				dispatcher.forward(request, response);
 			} else if(!dbResult && inputResult){ //失敗時

@@ -1,6 +1,9 @@
 package servlet;
 
 import java.io.IOException;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
 
 import javax.servlet.RequestDispatcher;
@@ -40,40 +43,61 @@ public class LoginServlet extends HttpServlet {
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		request.setCharacterEncoding("UTF-8");
-		//入力されたものを格納
-		Login login = new Login();
-		login.setEmail(request.getParameter("email"));
-		login.setPass(request.getParameter("pass"));
-		LoginLogic loginLogic = new LoginLogic();
+		try {
+			// TODO Auto-generated method stub
+			request.setCharacterEncoding("UTF-8");
+			//入力されたものを格納
+			Login login = new Login();
+			login.setEmail(request.getParameter("email"));
+			login.setPass(request.getParameter("pass"));
+			LoginLogic loginLogic = new LoginLogic();
+			//ログイン正否
+			String path = "";
+			boolean isLogin = loginLogic.execute(login);
+			if (login.getEmail().equals("") || login.getPass().equals("")) {
+				isLogin = false;
+			}
+			if (isLogin) {
+				path = "Product";
+				//セッションスコープに3つを宣言
+				HttpSession session = request.getSession();
+				Payment payment = new Payment();
+				session.setAttribute("payment", payment);
+				HappyLife happyLife = new HappyLife();
+				happyLife = loginLogic.sessionExecute(login, happyLife);
+				session.setAttribute("happy", happyLife);
+				ArrayList<Product> productList = new ArrayList<Product>();
+				ProductListLogic productListLogic = new ProductListLogic();
+				productList = productListLogic.execute(productList);
+				session.setAttribute("product", productList);
 
-		//ログイン正否
-		String path="";
-		boolean isLogin =loginLogic.execute(login);
+				login = loginLogic.loginLoadExecute(login, happyLife);
+				DateTimeFormatter day_check = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+				LocalDateTime now = LocalDateTime.now();
+				//now=now.parse(now, day_check);
+				login.getLast_login().format(day_check);
+				login.setDay_diff(ChronoUnit.DAYS.between(login.getLast_login(), now));
 
-		if(login.getEmail().equals("")||login.getPass().equals("")) {
-			isLogin=false;
-		}
+				if (login.getDay_diff() != 0) {
+					login.setLast_login(now);
+					loginLogic.LoginCompleteExecute(login);
+					request.setAttribute("login", login);
+					path = "/WEB-INF/jsp/logincomplete.jsp";
+					RequestDispatcher dispatcher = request.getRequestDispatcher(path);
+					dispatcher.forward(request, response);
+				} else {
+					response.sendRedirect(path);
+				}
 
-		if(isLogin) {
-			path= "Product";
-			//セッションスコープに3つを宣言
-			HttpSession session = request.getSession();
-			Payment payment = new Payment();
-			session.setAttribute("payment", payment);
-			HappyLife happyLife = new HappyLife();
-			happyLife =loginLogic.sessionExecute(login, happyLife);
-			session.setAttribute("happy", happyLife);
-			ArrayList<Product> productList = new ArrayList<Product>();
-			ProductListLogic productListLogic = new ProductListLogic();
-			productList = productListLogic.execute(productList);
-			session.setAttribute("product", productList);
-			response.sendRedirect(path);
-		}else {
-			path= "/WEB-INF/jsp/loginerror.jsp";
-			RequestDispatcher dispatcher = request.getRequestDispatcher(path);
-			dispatcher.forward(request,response);
+			} else {
+				path = "/WEB-INF/jsp/loginerror.jsp";
+				RequestDispatcher dispatcher = request.getRequestDispatcher(path);
+				dispatcher.forward(request, response);
+			}
+		} catch (Exception e) {
+			// TODO: handle exception
+			e.printStackTrace();
+			response.sendRedirect("TOP");
 		}
 
 
