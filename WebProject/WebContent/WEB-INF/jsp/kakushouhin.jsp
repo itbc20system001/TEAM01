@@ -28,6 +28,7 @@
 </header> --%>
   <table align="center">
   <% for(int j = 0; j < productList.size(); j+=3){ %>
+
     <tr>
       <%
       	for (int i = j; i < productList.size(); i++) {
@@ -51,12 +52,14 @@
           <button type="submit" name="商品" value="<%=productList.get(i).getP_id() - 1%>">
             <img src="image/<%=productList.get(i).getP_name()%>.png" width="200" height="200" alt="shouhin<%=i%>">
           </button>
-        </form></td>
+        </form><br><br></td>
 
       <% if(i%3==2) break;
       	}
       %>
+
     </tr>
+
      <%
       }
     %>
