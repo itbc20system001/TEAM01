@@ -6,13 +6,8 @@
 <title>幸福堂｜ログイン</title>
 <link rel="stylesheet" href="kohukudo.css">
 <style type="text/css">
-h2 {
-	padding-bottom: 8px;
-	border-bottom: 3px solid darkred;
-}
-
 td {
-	padding: 4px;
+  padding: 4px;
 }
 </style>
 </head>
@@ -24,6 +19,7 @@ td {
     </h1>
   </header>
   <h2>ログイン</h2>
+  <hr>
   <h3>メールアドレスとパスワードを入力してください</h3>
   <table>
     <form action="Login" method="post">
