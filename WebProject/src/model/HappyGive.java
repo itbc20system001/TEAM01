@@ -2,20 +2,16 @@ package model;
 
 import java.util.Random;
 
-import javabeans.HappyLife;
 import javabeans.Register;
 
 //ロジック：happypointのランダム生成クラス
 public class HappyGive {
 
-	public void pointExcute() {
-
-		HappyLife happylife = new HappyLife();
-
+	public int pointExcute() {
 		//happypointランダム生成
-		int h = (int) (Math.random() * 10000) + 1;
+		int sum = (int) (Math.random() * 100) + 30;
 		//javabeansにランダム生成された値をセット
-		happylife.setHappypoint(h);
+		return sum;
 	}
 	public int pointExcute(Register register) {
 		//happypointランダム生成
