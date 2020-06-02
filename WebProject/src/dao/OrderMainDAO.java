@@ -7,6 +7,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
 
 import javabeans.HappyLife;
 
@@ -83,5 +84,49 @@ public class OrderMainDAO {
 			return null;
 		}
 		return happyLife;
+	}
+
+	public ArrayList<HappyLife> getMainOrder (HappyLife happyLife) {
+		ArrayList<HappyLife> ordered = new ArrayList<HappyLife>();
+
+		try {
+			Class.forName("org.mariadb.jdbc.Driver");
+		} catch (ClassNotFoundException e1) {
+			// TODO 自動生成された catch ブロック
+			e1.printStackTrace();
+		}
+
+
+		try(Connection conn = DriverManager.getConnection(JDBC_URL,DB_USER,DB_PASS)){
+
+			String sql = "select * from order_main where usr_id = ?";
+			PreparedStatement pStmt = conn.prepareStatement(sql);
+			LocalDateTime god = happyLife.getOrderDate();
+			DateTimeFormatter f = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss.S");
+			//java.sql.Timestamp javaSqlDate = java.sql.Timestamp.valueOf(god);
+			pStmt.setInt(1,happyLife.getUserid());
+
+			ResultSet rs = pStmt.executeQuery();
+			while(rs.next()) {
+				int po_id = rs.getInt("po_id");
+				String order_date_base = rs.getString("order_date");
+				LocalDateTime orderDate=LocalDateTime.parse(order_date_base,f);
+				String limit_date_base = rs.getString("limit_date");
+				LocalDateTime limitDate=LocalDateTime.parse(limit_date_base,f);
+				//System.out.println(limitDate);
+				//System.out.println(po_id);
+				HappyLife hp = new HappyLife();
+				hp.setPo_id(po_id);
+				hp.setUserid(happyLife.getUserid());
+				hp.setOrderDate(orderDate);
+				hp.setLimitDate(limitDate);
+
+				ordered.add(hp);
+			}
+		}catch(SQLException e) {
+			e.printStackTrace();
+			return null;
+		}
+		return ordered;
 	}
 }

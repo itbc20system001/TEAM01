@@ -1,5 +1,7 @@
 package model;
 
+import java.util.ArrayList;
+
 import dao.OrderMainDAO;
 import javabeans.HappyLife;
 
@@ -12,6 +14,10 @@ public class PostOrderMainDAOLogic {
 	public HappyLife poIdExecute (HappyLife happyLife) {
 		OrderMainDAO omd = new OrderMainDAO();
 		return omd.poIdCheck(happyLife);
+	}
+	public ArrayList<HappyLife> getMainExecute (HappyLife happyLife){
+		OrderMainDAO omd = new OrderMainDAO();
+		return omd.getMainOrder(happyLife);
 	}
 
 }
