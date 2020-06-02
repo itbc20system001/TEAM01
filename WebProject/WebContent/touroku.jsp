@@ -5,8 +5,8 @@
 <meta charset="UTF-8">
 <title>幸福堂｜新規会員登録</title>
 <style type="text/css">
-h2 {
-	border-bottom: 3px solid darkred;
+hr {
+	border-color:darkred;
 }
 </style>
 </head>
@@ -18,17 +18,10 @@ h2 {
     </h1>
   </header>
   <h2>新規会員登録フォーム</h2>
+  <hr>
   <h3>必要事項を入力してください</h3>
   <form action="Register" method="post">
-    利用者名（氏）<br>
-    <input type="text" name="l_name"><br>
-    <br> 利用者名（名）<br>
-    <input type="text" name="f_name"><br>
-    <br> 利用者名（氏カナ）<br>
-    <input type="text" name="l_name_kana"><br>
-    <br> 利用者名（名カナ）<br>
-    <input type="text" name="f_name_kana"><br>
-    <br> 住所（都道府県）<br>
+    利用者名（氏）<br> <input type="text" name="l_name"><br> <br> 利用者名（名）<br> <input type="text" name="f_name"><br> <br> 利用者名（氏カナ）<br> <input type="text" name="l_name_kana"><br> <br> 利用者名（名カナ）<br> <input type="text" name="f_name_kana"><br> <br> 住所（都道府県）<br>
     <!-- <input type="text" name="prefecture"> -->
     <select name="prefecture">
       <option value="" selected>都道府県</option>
@@ -79,16 +72,7 @@ h2 {
       <option value="宮崎県">宮崎県</option>
       <option value="鹿児島県">鹿児島県</option>
       <option value="沖縄県">沖縄県</option>
-    </select><br>
-    <br> 住所（市区町村名）<br>
-    <input type="text" name="city"><br>
-    <br> 住所（その他）<br>
-    <input type="text" name="o_address"><br>
-    <br> 電話番号<br>
-    <input type="text" name="tel"><br>
-    <br> Eメールアドレス<br>
-    <input type="text" name="email"><br>
-    <br> 生年月日
+    </select><br> <br> 住所（市区町村名）<br> <input type="text" name="city"><br> <br> 住所（その他）<br> <input type="text" name="o_address"><br> <br> 電話番号<br> <input type="text" name="tel"><br> <br> Eメールアドレス<br> <input type="text" name="email"><br> <br> 生年月日
     <!-- <input type="text" name="birthday"> -->
 
 
@@ -132,9 +116,7 @@ h2 {
             optionLoop(1, 31, 'id_day', this_day);
           })();
         </script>
-    <br> パスワード<br>
-    <input type="password" name="password"><br>
-    <br> <input type="submit" value="送信">
+    <br> パスワード<br> <input type="password" name="password"><br> <br> <input type="submit" value="送信">
   </form>
   <footer>
     <jsp:include page="/WEB-INF/jsp/footer.jsp" />

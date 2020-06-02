@@ -6,6 +6,9 @@
 <title>幸福堂｜ログイン</title>
 <link rel="stylesheet" href="kohukudo.css">
 <style type="text/css">
+hr {
+	border-color:darkred;
+}
 td {
   padding: 4px;
 }
