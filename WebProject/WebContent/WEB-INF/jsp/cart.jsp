@@ -13,30 +13,59 @@
 <head>
 <meta charset="UTF-8">
 <title>カート</title>
+<style type="text/css">
+table{
+text-align:center;
+}
+th{
+padding:12px;
+border-bottom:1px dashed darkred;
+text-align:center;
+}
+td{
+
+padding:12px;
+border-bottom:1px dashed darkred;
+text-align:center;
+}
+</style>
 </head>
 <body>
 <header>
 <jsp:include page="/WEB-INF/jsp/header.jsp" />
 </header>
-  <h1>幸福堂｜カートの内容</h1>
-  <%
-  	for (int i = 0; i < happyLife.getP_Buy_List().size(); i++) {
-  %>
-  <p>
-  <form action="Cart" method="POST">
-    <%=happyLife.getP_Buy_List().get(i).getP_name()%>:
-    <%=happyLife.getP_Buy_List().get(i).getPrice()%>KP <input type="submit" value="<%=happyLife.getP_Buy_List().get(i).getP_name()%>をカートから削除" name="削除" onclick="cartOut()">
-  </form>
-  </p>
-  <%
-  	}
-  %>
-  <p></p>
+  <h1>ショッピングカート</h1>
+
   <%
   	if (happyLife.getP_Buy_List().size() != 0) {
   %>
-  <a href=Buy>購入へ</a>
-  <br>
+
+  <table>
+  <thead>
+  <tr>
+  <th>商品名</th>
+  <th>小計</th>
+  <th>削除</th>
+  </tr>
+  </thead>
+
+  <%
+    for (int i = 0; i < happyLife.getP_Buy_List().size(); i++) {
+  %>
+  <tr>
+  <form action="Cart" method="POST">
+    <td ><%=happyLife.getP_Buy_List().get(i).getP_name()%>
+    <br><img src="image/<%=happyLife.getP_Buy_List().get(i).getP_name()%>.png" width="80" height="80" alt="shouhin<%=i%>"></td>
+    <td><%=happyLife.getP_Buy_List().get(i).getPrice()%>KP</td>
+    <td> <input type="submit" value="<%=happyLife.getP_Buy_List().get(i).getP_name()%>をカートから削除" name="削除" onclick="cartOut()"></td>
+  </form>
+  </tr>
+  <%
+    }
+  %>
+
+  </table>
+  <br><br><a href=Buy>購入へ</a>
   <%
   	} else {
   %>
@@ -44,7 +73,7 @@
   <%
   	}
   %>
-  <a href=Product>商品一覧へ</a>
+  <br><a href=Product>商品一覧へ</a>
   <footer>
     <jsp:include page="/WEB-INF/jsp/footer.jsp" />
   </footer>
