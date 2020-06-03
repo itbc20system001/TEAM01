@@ -17,12 +17,12 @@
 <ul>
 <li>ようこそ、<%=happyLife.getUsrName() %>さん</li>
 <li>所有KP:<%=happyLife.getHappypoint() %>KP</li>
-<li><a href="TOP"><img src="image/headerimage/幸福堂TOPa-new.png" alt="TOP"></a></li>
-<li><a href="Cart"><img src="image/headerimage/カート画面a-new.png" alt="cart"></a></li>
-<li><a href="Product"><img src="image/headerimage/商品一覧画面a-new.png" alt="itiran"></a></li>
-<li><a href="MyPage"><img src="image/headerimage/マイページa-new.png" alt="mypage"></a></li>
-<li><a href="Logout"><img src="image/headerimage/ログアウトa-new.png" alt="logout"></a></li>
-<li><a href="Q&A"><img src="image/headerimage/Q_A-new.png" alt="Q&A"></a></li>
+<li><a href="TOP"><img src="image/headerimage/幸福堂TOP.png" alt="TOP"></a></li>
+<li><a href="Cart"><img src="image/headerimage/カート画面.png" alt="cart"></a></li>
+<li><a href="Product"><img src="image/headerimage/商品一覧画面.png" alt="itiran"></a></li>
+<li><a href="MyPage"><img src="image/headerimage/マイページ.png" alt="mypage"></a></li>
+<li><a href="Logout"><img src="image/headerimage/ログアウト.png" alt="logout"></a></li>
+<li><a href="Q&A"><img src="image/headerimage/Q_A.png" alt="Q&A"></a></li>
 </ul>
 </nav>
 <nav class="nav2">
