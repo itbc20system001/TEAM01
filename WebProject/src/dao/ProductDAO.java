@@ -25,7 +25,7 @@ public class ProductDAO {
 
 		try(Connection conn = DriverManager.getConnection(JDBC_URL,DB_USER,DB_PASS)) {
 
-			String sql = "SELECT * FROM product";
+			String sql = "select * from product";
 			PreparedStatement pStmt = conn.prepareStatement(sql);
 			ResultSet rs =  pStmt.executeQuery();
 

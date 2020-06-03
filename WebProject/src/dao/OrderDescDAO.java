@@ -35,7 +35,7 @@ public class OrderDescDAO {
 				JDBC_URL, DB_USER, DB_PASS)) {
 
 			//INSERT文の準備
-			String sql = "INSERT INTO ORDER_DESC(PO_ID, P_id) VALUES(?,?)";
+			String sql = "insert into order_desc(po_id, p_id) values(?,?)";
 			PreparedStatement pStmt = conn.prepareStatement(sql);
 
 			//INSERT文中の「？」に使用する値を設定しSQLを完成

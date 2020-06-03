@@ -19,6 +19,7 @@ public class UsrDAO {
 	//現在未使用
 	public boolean create(Register register) {
 
+
 		try {
 			Class.forName("org.mariadb.jdbc.Driver");
 		} catch (ClassNotFoundException e1) {
@@ -29,7 +30,7 @@ public class UsrDAO {
 				JDBC_URL, DB_USER, DB_PASS)) {
 
 			//INSERT文の準備
-			String sql = "INSERT INTO USR(L_NAME,F_NAME,L_NAME_KANA,F_NAME_KANA,PREFECTURE,CITY,O_ADDRESS,TEL,EMAIL,BIRTHDAY,PASSWORD) VALUES(?,?,?,?,?,?,?,?,?,?,?)";
+			String sql = "insert into usr(l_name,f_name,l_name_kana,f_name_kana,prefecture,city,o_address,tel,email,birthday,passward) values(?,?,?,?,?,?,?,?,?,?,?)";
 			PreparedStatement pStmt = conn.prepareStatement(sql);
 
 			//INSERT文中の「？」に使用する値を設定しSQLを完成
@@ -72,7 +73,7 @@ public class UsrDAO {
 				JDBC_URL, DB_USER, DB_PASS)) {
 
 			//INSERT文の準備
-			String sql = "INSERT INTO USR(L_NAME,F_NAME,L_NAME_KANA,F_NAME_KANA,PREFECTURE,CITY,O_ADDRESS,TEL,EMAIL,BIRTHDAY,PASSWORD,HAPPY) VALUES(?,?,?,?,?,?,?,?,?,?,?,?)";
+			String sql = "insert into usr(l_name,f_name,l_name_kana,f_name_kana,prefecture,city,o_address,tel,email,birthday,password,happy) values(?,?,?,?,?,?,?,?,?,?,?,?)";
 			PreparedStatement pStmt = conn.prepareStatement(sql);
 
 			//INSERT文中の「？」に使用する値を設定しSQLを完成
@@ -146,7 +147,7 @@ public class UsrDAO {
 				JDBC_URL, DB_USER, DB_PASS)) {
 
 			//INSERT文の準備
-			String sql = "UPDATE usr SET HAPPY = ? WHERE USER_ID = ?";
+			String sql = "update usr set happy = ? where user_id = ?";
 			PreparedStatement pStmt = conn.prepareStatement(sql);
 
 			//INSERT文中の「？」に使用する値を設定しSQLを完成
@@ -232,7 +233,7 @@ public class UsrDAO {
 
 		try(Connection conn = DriverManager.getConnection(JDBC_URL,DB_USER,DB_PASS)) {
 
-			String sql = "SELECT * FROM usr";
+			String sql = "select * from usr";
 			PreparedStatement pStmt = conn.prepareStatement(sql);
 			ResultSet rs =  pStmt.executeQuery();
 

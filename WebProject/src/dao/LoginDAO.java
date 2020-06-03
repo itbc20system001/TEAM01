@@ -119,7 +119,7 @@ public class LoginDAO {
 				JDBC_URL, DB_USER, DB_PASS)) {
 
 			//INSERT文の準備
-			String sql = "INSERT INTO login(user_id,login_count,buy_count,last_login) VALUES(?,?,?,?)";
+			String sql = "insert into login(user_id,login_count,buy_count,last_login) values(?,?,?,?)";
 			PreparedStatement pStmt = conn.prepareStatement(sql);
 
 			//INSERT文中の「？」に使用する値を設定しSQLを完成
@@ -156,7 +156,7 @@ public class LoginDAO {
 				JDBC_URL, DB_USER, DB_PASS)) {
 
 			//INSERT文の準備
-			String sql = "UPDATE login SET login_count = ?,last_login = ? WHERE user_id = ?";
+			String sql = "update login set login_count = ?,last_login = ? where user_id = ?";
 			PreparedStatement pStmt = conn.prepareStatement(sql);
 			java.sql.Timestamp javaSqlDate = java.sql.Timestamp.valueOf(login.getLast_login());
 
@@ -191,7 +191,7 @@ public class LoginDAO {
 				JDBC_URL, DB_USER, DB_PASS)) {
 
 			//INSERT文の準備
-			String sql = "UPDATE login SET buy_count = ? WHERE user_id = ?";
+			String sql = "update login set buy_count = ? where user_id = ?";
 			PreparedStatement pStmt = conn.prepareStatement(sql);
 
 			//INSERT文中の「？」に使用する値を設定しSQLを完成
