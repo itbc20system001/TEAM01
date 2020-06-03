@@ -31,16 +31,21 @@ public class UserInfoGetServlet extends HttpServlet {
 			HttpSession session = request.getSession();
 			HappyLife happylife = (HappyLife) session.getAttribute("happy");
 			request.setCharacterEncoding("UTF-8");
-			//UsrDAOに処理を移してusrテーブルから会員情報をSELECT→Register.javaにセット
-			RegisterLogic rl = new RegisterLogic();
-			Register reg = new Register();
-			System.out.println(happylife.getUserid());
-			reg = rl.userInfoGetExcute(reg, happylife);
-			request.setAttribute("register", reg);
-			//"kaiinjoho.jsp"へフォワード
-			request.setCharacterEncoding("UTF-8");
-			RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/kaiinjoho.jsp");
-			dispatcher.forward(request, response);
+
+			if(happylife.getHappypoint()<0) {
+				response.sendRedirect("-");
+			}else {
+				//UsrDAOに処理を移してusrテーブルから会員情報をSELECT→Register.javaにセット
+				RegisterLogic rl = new RegisterLogic();
+				Register reg = new Register();
+				System.out.println(happylife.getUserid());
+				reg = rl.userInfoGetExcute(reg, happylife);
+				request.setAttribute("register", reg);
+				//"kaiinjoho.jsp"へフォワード
+				request.setCharacterEncoding("UTF-8");
+				RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/kaiinjoho.jsp");
+				dispatcher.forward(request, response);
+			}
 		} catch (Exception e) {
 			// TODO: handle exception
 			e.printStackTrace();

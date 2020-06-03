@@ -39,13 +39,17 @@ public class BoughtServlet extends HttpServlet {
 			//セッションスコープからhappy
 			HttpSession session = request.getSession();
 			HappyLife happy = (HappyLife) session.getAttribute("happy");
-			//なんでもよかったが今回はgetOrderDateがnullとなる場合のみdoPost
-			//tyuumon.jspで更新連打を防ぐ
-			if (happy.getOrderDate() == null) {
-				doPost(request, response);
-			} else {
-				RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/tyuumon.jsp");
-				dispatcher.forward(request, response);
+			if(happy.getHappypoint()<0) {
+				response.sendRedirect("-");
+			}else {
+				//なんでもよかったが今回はgetOrderDateがnullとなる場合のみdoPost
+				//tyuumon.jspで更新連打を防ぐ
+				if (happy.getOrderDate() == null) {
+					doPost(request, response);
+				} else {
+					RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/tyuumon.jsp");
+					dispatcher.forward(request, response);
+				}
 			}
 			/*		//セッションスコープ
 			HttpSession session = request.getSession();
@@ -84,9 +88,9 @@ public class BoughtServlet extends HttpServlet {
 				happy.setOrderDate(LocalDateTime.now());
 
 				if(login.getLogin_count() >= 30 && login.getBuy_count() >= 120) {
-				happy.setLimitDate(happy.getOrderDate().plusDays(2));
+					happy.setLimitDate(happy.getOrderDate().plusDays(2));
 				}else {
-				happy.setLimitDate(happy.getOrderDate().plusDays(1));
+					happy.setLimitDate(happy.getOrderDate().plusDays(1));
 				}
 
 				happy.setProductid(happy.getP_Buy_List().get(i).getP_id());

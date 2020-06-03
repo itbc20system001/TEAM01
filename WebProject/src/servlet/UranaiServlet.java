@@ -24,8 +24,14 @@ public class UranaiServlet extends HttpServlet {
 			throws ServletException, IOException {
 		try {
 			request.setCharacterEncoding("UTF-8");
-			RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/uranai.jsp");
-			dispatcher.forward(request, response);
+			HttpSession session = request.getSession();
+			HappyLife happyLife = (HappyLife) session.getAttribute("happy");
+			if(happyLife.getHappypoint()<0) {
+				response.sendRedirect("-");
+			}else {
+				RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/uranai.jsp");
+				dispatcher.forward(request, response);
+			}
 		} catch (IOException e) {
 			// TODO: handle exception
 			e.printStackTrace();
@@ -38,25 +44,29 @@ public class UranaiServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		//占いから呼び出し
-				HttpSession session = request.getSession();
-				HappyLife happy = (HappyLife) session.getAttribute("happy");
+		HttpSession session = request.getSession();
+		HappyLife happy = (HappyLife) session.getAttribute("happy");
+		if(happy.getHappypoint()<0) {
+			response.sendRedirect("-");
+		}else {
 
-				//happycalclogicインスタンスに引数としてhappyスコープを渡して計算前のKPをhappyにセット
-				HappyCalcLogic hcl = new HappyCalcLogic();
-				happy = hcl.uranai(happy);
+			//happycalclogicインスタンスに引数としてhappyスコープを渡して計算前のKPをhappyにセット
+			HappyCalcLogic hcl = new HappyCalcLogic();
+			happy = hcl.uranai(happy);
 
-				//リクエストスコープで計算前のKPを送る
-				request.setAttribute("kp", happy.getKP());
-				//セッションスコープで計算後のKPを送る
-				happy.setHappypoint(happy.getHappypoint()+happy.getKP());
+			//リクエストスコープで計算前のKPを送る
+			request.setAttribute("kp", happy.getKP());
+			//セッションスコープで計算後のKPを送る
+			happy.setHappypoint(happy.getHappypoint()+happy.getKP());
 
-				//返ってきた計算結果をbalanceregisterlogicを使用してデータベース書き換え
-				BalanceRegisterLogic brl = new BalanceRegisterLogic();
-				brl.execute(happy);
+			//返ってきた計算結果をbalanceregisterlogicを使用してデータベース書き換え
+			BalanceRegisterLogic brl = new BalanceRegisterLogic();
+			brl.execute(happy);
 
-				//その内容をフォワードorリダイレクトuranai.jsp
-				RequestDispatcher dispatcher =request.getRequestDispatcher("/WEB-INF/jsp/uranai.jsp");
-				dispatcher.forward(request, response);
+			//その内容をフォワードorリダイレクトuranai.jsp
+			RequestDispatcher dispatcher =request.getRequestDispatcher("/WEB-INF/jsp/uranai.jsp");
+			dispatcher.forward(request, response);
+		}
 	}
 
 

@@ -10,6 +10,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import javabeans.HappyLife;
+
 /**
  * Servlet implementation class LogoutServlet
  */
@@ -20,8 +22,14 @@ public class LogoutServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		try {
 			request.setCharacterEncoding("UTF-8");
-			RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/logout_kakunin.jsp");
-			dispatcher.forward(request, response);
+			HttpSession session = request.getSession();
+			HappyLife happyLife = (HappyLife) session.getAttribute("happy");
+			if(happyLife.getHappypoint()<0) {
+				response.sendRedirect("-");
+			}else {
+				RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/logout_kakunin.jsp");
+				dispatcher.forward(request, response);
+			}
 		} catch (Exception e) {
 			// TODO: handle exception
 			e.printStackTrace();

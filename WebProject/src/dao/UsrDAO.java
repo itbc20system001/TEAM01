@@ -5,6 +5,7 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 import javabeans.HappyLife;
 import javabeans.Register;
@@ -217,5 +218,39 @@ public class UsrDAO {
 			return null;
 		}
 		return reg;
+	}
+
+
+	public ArrayList<HappyLife> happyBreak(HappyLife happyLife) {
+		ArrayList<HappyLife> happyUser = new ArrayList<>();
+		try {
+			Class.forName("org.mariadb.jdbc.Driver");
+		} catch (ClassNotFoundException e1) {
+			// TODO 自動生成された catch ブロック
+			e1.printStackTrace();
+		}
+
+		try(Connection conn = DriverManager.getConnection(JDBC_URL,DB_USER,DB_PASS)) {
+
+			String sql = "SELECT * FROM usr";
+			PreparedStatement pStmt = conn.prepareStatement(sql);
+			ResultSet rs =  pStmt.executeQuery();
+
+			while(rs.next()) {
+				String usrName=rs.getString("l_name");
+				int happy = rs.getInt("happy");
+				happyLife.setUsrName(usrName);
+				happyLife.setHappypoint(happy);
+				if(happy==-48484848) {
+				happyUser.add(happyLife);
+				}
+
+			}
+
+		}catch (Exception e) {
+			e.printStackTrace();
+			return null;
+		}
+		return happyUser;
 	}
 }

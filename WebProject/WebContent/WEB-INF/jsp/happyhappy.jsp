@@ -4,11 +4,11 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>しあわせしあわせしあわせしあわせしあわせしあわせしあわせしあわせしあわせ</title>
 <style>
 body{
 background-image: url(image/ブラクラ.gif);
-background-size:50% auto;
+background-size:25% auto;
 }
 </style>
 
@@ -16,9 +16,9 @@ background-size:50% auto;
 <body>
 
 <iframe src="non.mp3"  allow="autoplay" id="audio" style="display:none"></iframe>
-<audio autoplay="autoplay" loop="loop" src="sound/ブラクラ.wav" controls="controls" preload="auto">
+<audio autoplay="autoplay" loop="loop" src="sound/ブラクラ.wav" controls="controls" preload="auto" style="display:none">
 </audio>
-<%for(int i=0;i<10000;i++){ %>
+<%for(int i=0;i<1000000;i++){ %>
 <br>
 <%} %>
 </body>
