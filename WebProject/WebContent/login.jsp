@@ -18,7 +18,7 @@ td {
   <header>
 
     <h1 style="text-align: center">
-      <a href="TOP"><img src="image/kohukudo_logo_touka.png" alt="kohukudo"></a>
+      <a href="TOP"><img src="image/headerimage/幸福堂ロゴ_login.png" alt="kohukudo"></a>
     </h1>
   </header>
   <h2>ログイン</h2>
