@@ -19,6 +19,7 @@ public class UsrDAO {
 	//現在未使用
 	public boolean create(Register register) {
 
+
 		try {
 			Class.forName("org.mariadb.jdbc.Driver");
 		} catch (ClassNotFoundException e1) {
