@@ -22,9 +22,7 @@
 h2{
 border-bottom:1px dashed darkred;
 }
-table{
-border-bottom:1px dashed darkred;
-}
+
 th{
 padding:12px;
 border-bottom:1px dashed darkred;
@@ -48,6 +46,7 @@ text-align:center;
   <tr>
   <th>商品名</th>
   <th>小計</th>
+  <th>残り有効期限</th>
   </tr>
   </thead>
   <%
@@ -68,7 +67,6 @@ text-align:center;
             if (ordered.get(j).getPo_id() == happyLife.getPo_id_List().get(i)&&!now.isAfter(ordered.get(j).getLimitDate())) {
               limit_over++;
       %>
-    <td>残り有効期限：</td>
 
     <td><%=ordered.get(j).getLimitDate().format(f)%>まで</td>
     <%
