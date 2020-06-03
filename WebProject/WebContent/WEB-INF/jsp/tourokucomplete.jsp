@@ -8,17 +8,29 @@
 <head>
 <meta charset="UTF-8">
 <title>幸福堂｜登録完了</title>
+<style type="text/css">
+hr {
+  border-color: darkred;
+}
+</style>
 </head>
 <body>
   <header>
     <link rel="stylesheet" href="kohukudo.css">
     <h1 style="text-align: center">
-      <a href="TOP"><img src="image/kohukudo_logo_touka.png" alt="kohukudo"></a>
+      <a href="TOP"><img src="image/headerimage/幸福堂ロゴ_login.png" alt="kohukudo"></a>
     </h1>
   </header>
-  <p>
-    幸福ポイントが<%=happyLife.getHappypoint()%>KP付与されました。
-  </p>
+    <h2>新規会員登録完了</h2>
+  <hr>
+  <h3>
+    お疲れさまでした。
+     <br>これにて新規会員登録完了です。
+
+    <p>幸福ポイントが、「<%=happyLife.getHappypoint()%>KP」付与されました。</p>
+    <br>付与された幸福ポイントを用いて、幸福堂でのお買い物をお楽しみください。
+    <p>つづいて、下記「TOP画面へ」をクリックして、TOP画面からログインをお願いいたします。</p>
+  </h3>
   <p>
     <a href="TOP">TOP画面へ</a>
   </p>

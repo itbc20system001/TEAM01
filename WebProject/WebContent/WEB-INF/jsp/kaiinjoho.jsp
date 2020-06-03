@@ -12,13 +12,17 @@
 <meta charset="UTF-8">
 <title>幸福堂｜会員情報の表示</title>
 <style type="text/css">
-.info{
-border-collapse: collapse;
+hr {
+  border-color: darkred;
 }
-.info th, .info td{
-padding:8px;
-border: 2px solid #800000;
-text-align: left;
+.info {
+	border-collapse: collapse;
+}
+
+.info th, .info td {
+	padding: 8px;
+	border-bottom: 1px solid #800000;
+	text-align: left;
 }
 </style>
 </head>
@@ -26,16 +30,19 @@ text-align: left;
   <header>
     <jsp:include page="/WEB-INF/jsp/header.jsp" />
   </header>
-  <h1><%=happyLife.getUsrName()%>さんの会員情報
-  </h1>
+   <h2>ご登録情報の確認</h2>
+   <hr>
+  <h3><%=happyLife.getUsrName()%>さんの会員情報
+  </h3>
+
   <table class="info">
     <tr>
       <th>氏名</th>
-      <td><%=register.getL_name()%><%=register.getF_name()%>様</td>
+      <td><%=register.getL_name()%><%=register.getF_name()%>さん</td>
     </tr>
     <tr>
       <th>氏名(カナ)</th>
-      <td><%=register.getL_name_kana()%><%=register.getF_name_kana()%>様</td>
+      <td><%=register.getL_name_kana()%><%=register.getF_name_kana()%>さん</td>
     </tr>
     <tr>
       <th>お住まいの地域</th>
