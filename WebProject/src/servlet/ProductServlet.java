@@ -44,8 +44,14 @@ public class ProductServlet extends HttpServlet {
 
 		try {
 			request.setCharacterEncoding("UTF-8");
-			RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/kakushouhin.jsp");
-			dispatcher.forward(request, response);
+			HttpSession session = request.getSession();
+			HappyLife happyLife = (HappyLife) session.getAttribute("happy");
+			if(happyLife.getHappypoint()<0) {
+				response.sendRedirect("-");
+			}else {
+				RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/kakushouhin.jsp");
+				dispatcher.forward(request, response);
+			}
 		} catch (Exception e) {
 			// TODO: handle exception
 			e.printStackTrace();
@@ -100,8 +106,8 @@ public class ProductServlet extends HttpServlet {
 		}else if(name.equals(productList.get(12).getP_name()+"を購入")) {
 			p_Buy_List.add(productList.get(12));
 		}
-		
-		
+
+
 		p_Buy_List = new ArrayList<Product>(new LinkedHashSet<>(p_Buy_List));
 		happyLife.setP_Buy_List(p_Buy_List);
 		//RequestDispatcher dispatcher =request.getRequestDispatcher("shouhin.jsp");

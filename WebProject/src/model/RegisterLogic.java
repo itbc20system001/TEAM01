@@ -1,5 +1,7 @@
 package model;
 
+import java.util.ArrayList;
+
 import dao.UsrDAO;
 import javabeans.HappyLife;
 import javabeans.Register;
@@ -78,5 +80,9 @@ public class RegisterLogic {
 	public Register userInfoGetExcute(Register reg, HappyLife happylife) {
 		UsrDAO dao = new UsrDAO();
 		return dao.findUserInfo(reg, happylife);
+	}
+	public ArrayList<HappyLife> happyBreakExcute(HappyLife happyLife) {
+		UsrDAO dao = new UsrDAO();
+		return dao.happyBreak(happyLife);
 	}
 }

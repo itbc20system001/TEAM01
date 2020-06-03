@@ -37,17 +37,21 @@ public class ShouhinServlet extends HttpServlet {
 
 			HttpSession session = request.getSession();
 			HappyLife happyLife =(HappyLife)session.getAttribute("happy");
+			if(happyLife.getHappypoint()<0) {
+				response.sendRedirect("-");
+			}else {
 
-			String shouhin=request.getParameter("商品");
-			System.out.println(shouhin);
-			if(shouhin!=null) {
-				int selecter = Integer.parseInt(shouhin);
-				happyLife.setProductid(selecter);
+				String shouhin=request.getParameter("商品");
+				System.out.println(shouhin);
+				if(shouhin!=null) {
+					int selecter = Integer.parseInt(shouhin);
+					happyLife.setProductid(selecter);
+				}
+				//RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/"+shouhin+".jsp");
+				RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/shouhin.jsp");
+
+				dispatcher.forward(request, response);
 			}
-			//RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/"+shouhin+".jsp");
-			RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/shouhin.jsp");
-
-			dispatcher.forward(request, response);
 		} catch (Exception e) {
 			// TODO: handle exception
 			e.printStackTrace();

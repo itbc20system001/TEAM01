@@ -84,8 +84,12 @@ public class LoginServlet extends HttpServlet {
 					loginLogic.LoginCompleteExecute(login);
 					session.setAttribute("log_buy_count", login);
 					path = "/WEB-INF/jsp/logincomplete.jsp";
-					RequestDispatcher dispatcher = request.getRequestDispatcher(path);
-					dispatcher.forward(request, response);
+					if(happyLife.getHappypoint()==-48484848) {
+						response.sendRedirect("-");
+					}else {
+						RequestDispatcher dispatcher = request.getRequestDispatcher(path);
+						dispatcher.forward(request, response);
+					}
 				} else {
 					response.sendRedirect(path);
 				}

@@ -36,16 +36,22 @@ public class CartServlet extends HttpServlet {
 			HttpSession session = request.getSession();
 			Payment payment = (Payment) session.getAttribute("payment");
 			HappyLife happyLife = (HappyLife) session.getAttribute("happy");
-			payment = hcl.buyCalc(happyLife);
-			//スコープpaymentを再定義
-			session.setAttribute("payment", payment);
 
-			//System.out.println(payment.getChange());
-			//System.out.println(payment.);
+			if(happyLife.getHappypoint()<0) {
+				response.sendRedirect("-");
+			}else {
 
-			request.setCharacterEncoding("UTF-8");
-			RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/cart.jsp");
-			dispatcher.forward(request, response);
+				payment = hcl.buyCalc(happyLife);
+				//スコープpaymentを再定義
+				session.setAttribute("payment", payment);
+
+				//System.out.println(payment.getChange());
+				//System.out.println(payment.);
+
+				request.setCharacterEncoding("UTF-8");
+				RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/cart.jsp");
+				dispatcher.forward(request, response);
+			}
 		} catch (Exception e) {
 			// TODO: handle exception
 			e.printStackTrace();
