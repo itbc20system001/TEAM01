@@ -64,7 +64,8 @@ td.text:first-letter {
   <%
   	} else {
   %>
-  カートに入っています
+  カートに入っています<br>
+  <a href=Cart>カートへ</a>
   <%
   	}
   %>
