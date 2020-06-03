@@ -12,6 +12,23 @@ hr {
 td {
   padding: 4px;
 }
+.botton{
+  display : inline-block;
+  border-radius :  5%;
+  font-size : 14pt;
+  text-align : center;
+  cursor : pointer;
+  padding : 12px 18px;
+  background : #ffa64d;
+  color : #ffffff;
+  line-height : 1em;
+  transition : .3s;
+  box-shadow : 2px 2px 3px #666666;
+}
+.botton:hover{
+  box-shadow : none;
+  opocity : 0.8;
+}
 </style>
 </head>
 <body>
@@ -35,7 +52,7 @@ td {
         <td><input type="password" name="pass"> <br></td>
       </tr>
   </table>
-  <input type="submit" value="ログイン">
+  <input type="submit" value="ログイン" class="botton">
   </form>
   <p>
     <a href="Register">ご新規の方はこちら(会員登録画面へ)</a>
