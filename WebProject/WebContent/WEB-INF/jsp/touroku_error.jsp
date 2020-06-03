@@ -7,14 +7,21 @@
 <head>
 <meta charset="UTF-8">
 <title>幸福堂｜会員登録エラー</title>
+<style type="text/css">
+hr {
+  border-color: darkred;
+}
+</style>
 </head>
 <body>
   <header>
     <link rel="stylesheet" href="kohukudo.css">
     <h1 style="text-align: center">
-      <a href="TOP"><img src="image/kohukudo_logo_touka.png" alt="kohukudo"></a>
+      <a href="TOP"><img src="image/headerimage/幸福堂ロゴ_login.png" alt="kohukudo"></a>
     </h1>
   </header>
+  <h2>新規会員登録エラー</h2>
+  <hr>
   <p>会員登録においてエラーがありました。申し訳ございませんが再度登録をお願いいたします。</p>
   <p>
     エラー内容:<%=happyLife.getMessage()%></p>
