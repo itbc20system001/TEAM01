@@ -78,10 +78,11 @@ public class LoginServlet extends HttpServlet {
 				login.getLast_login().format(day_check);
 				login.setDay_diff(ChronoUnit.DAYS.between(login.getLast_login(), now));
 
+				session.setAttribute("log_buy_count", login);
 				if (login.getDay_diff() != 0) {
 					login.setLast_login(now);
 					loginLogic.LoginCompleteExecute(login);
-					request.setAttribute("login", login);
+					session.setAttribute("log_buy_count", login);
 					path = "/WEB-INF/jsp/logincomplete.jsp";
 					RequestDispatcher dispatcher = request.getRequestDispatcher(path);
 					dispatcher.forward(request, response);

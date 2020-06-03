@@ -1,6 +1,7 @@
 package servlet;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -11,6 +12,8 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import javabeans.HappyLife;
+import model.PostOrderDescDAOLogic;
+import model.PostOrderMainDAOLogic;
 
 /**
  * Servlet implementation class BuyServlet
@@ -26,9 +29,49 @@ public class BuyServlet extends HttpServlet {
 			throws ServletException, IOException {
 		try {
 			HttpSession session = request.getSession();
-			HappyLife happy = (HappyLife) session.getAttribute("happy");
-			happy.setOrderDate(null);
-			happy.setLimitDate(null);
+			HappyLife happyLife = (HappyLife) session.getAttribute("happy");
+			happyLife.setOrderDate(null);
+			happyLife.setLimitDate(null);
+
+			//
+			//DAO2つ起動
+			PostOrderMainDAOLogic  mainDao = new PostOrderMainDAOLogic();
+			PostOrderDescDAOLogic  descDao = new PostOrderDescDAOLogic();
+
+			//HappyLife型リストを起動して
+			//HashMap<Integer,HappyLife> ordered =new HashMap<Integer,HappyLife>();
+			ArrayList<HappyLife> ordered = new ArrayList<HappyLife>();
+			//購入した注文情報をリストに
+			ordered= mainDao.getMainExecute(happyLife);
+			//どの商品を買ったかを取得
+			for(int i = 0;i<ordered.size();i++) {
+				ordered= descDao.getDescExecute(ordered,i);
+			}
+			//Integer型のリストを2つ
+			ArrayList<Integer> ordered_List=new ArrayList<Integer>();
+			ArrayList<Integer> po_id_List=new ArrayList<Integer>();
+
+			//二重forで最新の注文番号で購入している各商品を割り出す
+			for(int i=0;i<ordered.size();i++) {
+				for(int j = 0;j<ordered.get(i).getOrdered_List().size();j++ ) {
+
+					if(ordered_List.contains(ordered.get(i).getOrdered_List().get(j))) {
+						int set = ordered_List.indexOf(ordered.get(i).getOrdered_List().get(j));
+						ordered_List.remove(set);
+						po_id_List.remove(set);
+					}
+					ordered_List.add(ordered.get(i).getOrdered_List().get(j));
+					po_id_List.add(ordered.get(i).getPo_id());
+				}
+			}
+
+			happyLife.setOrdered_List(ordered_List);
+			happyLife.setPo_id_List(po_id_List);
+
+			request.setAttribute("order", ordered);
+
+			//
+
 			RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/kakunin.jsp");
 			dispatcher.forward(request, response);
 		} catch (Exception e) {

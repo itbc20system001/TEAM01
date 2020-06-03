@@ -77,7 +77,12 @@ public class HappyCalcLogic {
 	public HappyLife uranai(HappyLife happyLife) {
 		int kekka = (int)(Math.random()*100)+1;
 		int KP = 0;
-		if(kekka <= 100 && kekka > 75) {
+		if(kekka== 100) {
+			//大凶
+			//現在持っているKPに－500
+			happyLife.setMessage("大凶");
+		    KP-=500;
+		}else if(kekka <= 100 && kekka > 75) {
 			//凶
 			//現在持っているKPに－20
 			happyLife.setMessage("凶");
@@ -93,11 +98,16 @@ public class HappyCalcLogic {
 			//KP+10
 			happyLife.setMessage("中吉");
 			KP+=10;
-		}else {
+		}else if(kekka <= 25 && kekka > 1) {
 			//大吉
 			//KP+20
 			happyLife.setMessage("大吉");
 			KP+=20;
+		}else {
+			//大大吉
+			//KP+500
+			happyLife.setMessage("大大吉");
+			KP+=500;
 		}
 		System.out.println(happyLife.getMessage());
 		happyLife.setKP(KP);

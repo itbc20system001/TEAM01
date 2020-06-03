@@ -13,10 +13,12 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import javabeans.HappyLife;
+import javabeans.Login;
 import javabeans.Payment;
 import javabeans.Product;
 import model.BalanceRegisterLogic;
 import model.HappyCalcLogic;
+import model.LoginLogic;
 import model.PostOrderDescDAOLogic;
 import model.PostOrderMainDAOLogic;
 
@@ -71,6 +73,7 @@ public class BoughtServlet extends HttpServlet {
 		ArrayList<Product> productList = (ArrayList<Product>) session.getAttribute("product");
 		HappyLife happy = (HappyLife) session.getAttribute("happy");
 		Payment payment = (Payment)session.getAttribute("payment");
+		Login login = (Login)session.getAttribute("log_buy_count");
 
 		//購入可能なら
 		if(payment.getChange() >= 0) {
@@ -79,7 +82,13 @@ public class BoughtServlet extends HttpServlet {
 			for(int i=0;i<happy.getP_Buy_List().size();i++) {//購入商品リストを回す
 				//注文時間と有効期限の取得
 				happy.setOrderDate(LocalDateTime.now());
+
+				if(login.getLogin_count() >= 30 && login.getBuy_count() >= 120) {
+				happy.setLimitDate(happy.getOrderDate().plusDays(2));
+				}else {
 				happy.setLimitDate(happy.getOrderDate().plusDays(1));
+				}
+
 				happy.setProductid(happy.getP_Buy_List().get(i).getP_id());
 
 				//OrderMainDAOに処理を移して注文書テーブルにINSERT
@@ -107,6 +116,10 @@ public class BoughtServlet extends HttpServlet {
 			brl.execute(happy);
 
 			payment.setPoint(point);
+
+			login.setBuy_count(login.getBuy_count()+(payment.getSum()/100));
+			LoginLogic loginLogic = new LoginLogic();
+			loginLogic.BuyCompleteExecute(login);
 
 			//注文完了画面にフォワード
 			happy.getP_Buy_List().clear();//カート内商品全消去
