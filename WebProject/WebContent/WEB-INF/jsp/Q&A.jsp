@@ -10,7 +10,7 @@
 <header>
     <jsp:include page="/WEB-INF/jsp/header.jsp" />
   </header>
-
+1.
 <footer>
     <jsp:include page="/WEB-INF/jsp/footer.jsp" />
   </footer>
