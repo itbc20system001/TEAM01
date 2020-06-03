@@ -37,25 +37,31 @@ public class PurchaseHistoryServlet extends HttpServlet {
 		// TODO Auto-generated method stub
 		try {
 			request.setCharacterEncoding("UTF-8");
+
+			//セッション
 			HttpSession session = request.getSession();
 			HappyLife happyLife = (HappyLife) session.getAttribute("happy");
 
+			//DAO2つ起動
 			PostOrderMainDAOLogic  mainDao = new PostOrderMainDAOLogic();
 			PostOrderDescDAOLogic  descDao = new PostOrderDescDAOLogic();
 
+			//HappyLife型リストを起動して
 			//HashMap<Integer,HappyLife> ordered =new HashMap<Integer,HappyLife>();
 			ArrayList<HappyLife> ordered = new ArrayList<HappyLife>();
+			//購入した注文情報をリストに
 			ordered= mainDao.getMainExecute(happyLife);
+			//どの商品を買ったかを取得
 			for(int i = 0;i<ordered.size();i++) {
 				ordered= descDao.getDescExecute(ordered,i);
 			}
+			//Integer型のリストを2つ
 			ArrayList<Integer> ordered_List=new ArrayList<Integer>();
 			ArrayList<Integer> po_id_List=new ArrayList<Integer>();
 
+			//二重forで最新の注文番号で購入している各商品を割り出す
 			for(int i=0;i<ordered.size();i++) {
 				for(int j = 0;j<ordered.get(i).getOrdered_List().size();j++ ) {
-					System.out.println("注文番号："+ordered.get(i).getPo_id());
-					System.out.println("注文商品："+ordered.get(i).getOrdered_List().get(j));
 
 					if(ordered_List.contains(ordered.get(i).getOrdered_List().get(j))) {
 						int set = ordered_List.indexOf(ordered.get(i).getOrdered_List().get(j));
@@ -65,14 +71,6 @@ public class PurchaseHistoryServlet extends HttpServlet {
 						ordered_List.add(ordered.get(i).getOrdered_List().get(j));
 						po_id_List.add(ordered.get(i).getPo_id());
 				}
-			}
-
-			//ordered_List = new ArrayList<Integer>(new LinkedHashSet<>(ordered_List));
-			for(int i = 0;i<ordered_List.size();i++ ) {
-				System.out.println(ordered_List.get(i));
-			}
-			for(int i = 0;i<po_id_List.size();i++ ) {
-				System.out.println(po_id_List.get(i));
 			}
 
 			happyLife.setOrdered_List(ordered_List);

@@ -30,4 +30,8 @@ public class LoginLogic {
 		LoginDAO dao = new LoginDAO();
 		return dao.loginLoad(login,happyLife);
 	}
+	public void BuyCompleteExecute (Login login) {
+		LoginDAO dao = new LoginDAO();
+		boolean check= dao.BuyComplete(login);
+	}
 }

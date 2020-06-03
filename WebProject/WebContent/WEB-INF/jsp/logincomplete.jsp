@@ -3,8 +3,7 @@
 <%@ page import="model.BalanceRegisterLogic" %>
 <%
 	HappyLife happyLife = (HappyLife) session.getAttribute("happy");
-    Login login = (Login)request.getAttribute("login");
-
+    Login login = (Login)session.getAttribute("log_buy_count");
     HappyGive happyGive = new HappyGive();
     int sum=happyGive.pointExcute();
     BalanceRegisterLogic brl = new BalanceRegisterLogic();

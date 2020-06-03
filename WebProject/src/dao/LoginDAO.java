@@ -179,6 +179,39 @@ public class LoginDAO {
 		return true;
 	}
 
+	public boolean BuyComplete(Login login) {
+
+		try {
+			Class.forName("org.mariadb.jdbc.Driver");
+		} catch (ClassNotFoundException e1) {
+			e1.printStackTrace();
+		}
+		//データベース接続
+		try (Connection conn = DriverManager.getConnection(
+				JDBC_URL, DB_USER, DB_PASS)) {
+
+			//INSERT文の準備
+			String sql = "UPDATE login SET buy_count = ? WHERE user_id = ?";
+			PreparedStatement pStmt = conn.prepareStatement(sql);
+
+			//INSERT文中の「？」に使用する値を設定しSQLを完成
+			pStmt.setInt(1, login.getBuy_count());
+			pStmt.setInt(2, login.getUser_id());
+
+			//INSERT文の実行
+			int result = pStmt.executeUpdate();
+			if (result != 1) {
+				return false;
+			}
+
+		} catch (SQLException e) {
+			// TODO: handle exception
+			e.printStackTrace();
+			return false;
+		}
+		return true;
+	}
+
 	public Login loginLoad (Login login,HappyLife happyLife) {
 
 		try {
