@@ -1,3 +1,5 @@
+
+
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@page import="javabeans.*"%>
 <%@page import="java.util.ArrayList"%>
@@ -6,9 +8,9 @@
 <%@ page import="java.time.format.DateTimeFormatter"%>
 <%
     ArrayList<HappyLife> ordered = (ArrayList) request.getAttribute("order");
-	HappyLife happyLife = (HappyLife) session.getAttribute("happy");
-	Payment payment = (Payment) session.getAttribute("payment");
-	ArrayList<Product> productList = (ArrayList<Product>) session.getAttribute("product");
+  HappyLife happyLife = (HappyLife) session.getAttribute("happy");
+  Payment payment = (Payment) session.getAttribute("payment");
+  ArrayList<Product> productList = (ArrayList<Product>) session.getAttribute("product");
     DateTimeFormatter f = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
     LocalDateTime now = LocalDateTime.now();
     int limit_over=0;
@@ -50,7 +52,7 @@ text-align:center;
   </tr>
   </thead>
   <%
-  	for (int k = 0; k < happyLife.getP_Buy_List().size(); k++) {
+    for (int k = 0; k < happyLife.getP_Buy_List().size(); k++) {
   %>
   <tr>
   <td><%=happyLife.getP_Buy_List().get(k).getP_name()%></td>
@@ -61,9 +63,8 @@ text-align:center;
     %>
     <%if(productList.get(i).getP_name().contains(happyLife.getP_Buy_List().get(k).getP_name())){%>
 
-
     <%
-        for (int j = 0; j < ordered.size(); j++) {
+    for (int j = 0; j < ordered.size(); j++) {
             if (ordered.get(j).getPo_id() == happyLife.getPo_id_List().get(i)&&!now.isAfter(ordered.get(j).getLimitDate())) {
               limit_over++;
       %>
@@ -77,7 +78,7 @@ text-align:center;
     %>
   </tr>
   <%
-  	}
+    }
   %>
 
   </table>

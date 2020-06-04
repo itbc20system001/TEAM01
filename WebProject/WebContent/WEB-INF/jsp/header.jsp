@@ -4,7 +4,7 @@
 <%@page import="java.util.ArrayList"%>
     <%HappyLife happyLife =(HappyLife)session.getAttribute("happy"); %>
 <%ArrayList<Product> productList = (ArrayList<Product>)session.getAttribute("product");
-
+Login login = (Login) session.getAttribute("log_buy_count");
 %>
 <!DOCTYPE html>
 <html>
@@ -30,7 +30,13 @@
 </ul>
 </nav>
 </head>
+<%
+if (login.getLogin_count() >= 30 && login.getBuy_count() >= 120) {
+  %>
+  <body class="happyback">
+    <%
+    }else{%>
 <body>
-
+    <%}%>
 </body>
 </html>

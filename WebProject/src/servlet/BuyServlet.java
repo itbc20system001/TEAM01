@@ -104,11 +104,11 @@ public class BuyServlet extends HttpServlet {
 		String choice = request.getParameter("go");
 		System.out.println(payment.getChange());
 		if(choice.equals("はい")) {
-		happyLife.setHappypoint(payment.getChange());
+			happyLife.setHappypoint(payment.getChange());
 
-		BalanceRegisterLogic balanceRegisterLogic = new BalanceRegisterLogic();
-		balanceRegisterLogic.execute(happyLife);
-		doGet(request, response);
+			BalanceRegisterLogic balanceRegisterLogic = new BalanceRegisterLogic();
+			balanceRegisterLogic.execute(happyLife);
+			doGet(request, response);
 		}else {
 			response.sendRedirect("Product");
 		}

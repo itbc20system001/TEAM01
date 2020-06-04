@@ -27,7 +27,7 @@
     	for (int i = 0; i < happyLife.getOrdered_List().size(); i++) {
     %>
     <tr>
-      <td><%=productList.get(i).getP_name()%></td>
+      <td><%=productList.get(happyLife.getOrdered_List().get(i)-1).getP_name()%></td>
       <%
       	for (int j = 0; j < ordered.size(); j++) {
       			if (ordered.get(j).getPo_id() == happyLife.getPo_id_List().get(i)) {

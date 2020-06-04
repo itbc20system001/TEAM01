@@ -18,7 +18,7 @@ background-size:25% auto;
 <iframe src="non.mp3"  allow="autoplay" id="audio" style="display:none"></iframe>
 <audio autoplay="autoplay" loop="loop" src="sound/ブラクラ.wav" controls="controls" preload="auto" style="display:none">
 </audio>
-<%for(int i=0;i<1000000;i++){ %>
+<%for(int i=0;i<1000;i++){ %>
 <br>
 <%} %>
 </body>

@@ -61,3 +61,7 @@ nav a:active{
 	background-image: url(image/headerimage/コウフク.png);
 	background-repeat: repeat-x;
 }
+
+.happyback{
+  background-image:url(image/虹.jpeg) ;
+}

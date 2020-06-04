@@ -66,9 +66,10 @@ public class ProductServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 
+		//購入された商品
 		request.setCharacterEncoding("UTF-8");
 		String name=request.getParameter("購入");
-		String name2 = name.replaceAll("[^0-9]", "");
+		//String name2 = name.replaceAll("[^0-9]", "");
 		//int a= Integer.parseInt(s);
 		//System.out.println(name);
 

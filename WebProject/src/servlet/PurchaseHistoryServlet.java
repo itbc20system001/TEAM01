@@ -53,9 +53,10 @@ public class PurchaseHistoryServlet extends HttpServlet {
 				//HappyLife型リストを起動して
 				//HashMap<Integer,HappyLife> ordered =new HashMap<Integer,HappyLife>();
 				ArrayList<HappyLife> ordered = new ArrayList<HappyLife>();
-				//購入した注文情報をリストに
+				//購入した注文情報(注文番号・注文日・期限)をリストに
 				ordered= mainDao.getMainExecute(happyLife);
 				//どの商品を買ったかを取得
+				//使用した注文番号回、その注文番号と照合する商品を入れる
 				for(int i = 0;i<ordered.size();i++) {
 					ordered= descDao.getDescExecute(ordered,i);
 				}
@@ -66,18 +67,21 @@ public class PurchaseHistoryServlet extends HttpServlet {
 				//二重forで最新の注文番号で購入している各商品を割り出す
 				for(int i=0;i<ordered.size();i++) {
 					for(int j = 0;j<ordered.get(i).getOrdered_List().size();j++ ) {
-
+						//過去に買っている商品の場合、前にあるものをリストから消す
 						if(ordered_List.contains(ordered.get(i).getOrdered_List().get(j))) {
 							int set = ordered_List.indexOf(ordered.get(i).getOrdered_List().get(j));
 							ordered_List.remove(set);
 							po_id_List.remove(set);
 						}
+						//i番目の購入した商品を
+						//System.out.println(ordered.get(i).getOrdered_List().get(j));
 						ordered_List.add(ordered.get(i).getOrdered_List().get(j));
 						po_id_List.add(ordered.get(i).getPo_id());
 					}
 				}
 
 				happyLife.setOrdered_List(ordered_List);
+				System.out.println(ordered_List);
 				happyLife.setPo_id_List(po_id_List);
 
 				request.setAttribute("order", ordered);

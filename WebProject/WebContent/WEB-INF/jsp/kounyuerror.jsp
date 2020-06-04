@@ -12,7 +12,7 @@
     <jsp:include page="/WEB-INF/jsp/header.jsp" />
   </header>
   <p>幸福ポイントが不足しているため、商品を購入できませんでした。</p>
-  <%if(lacky==0){ %>
+  <%if(true){ %>
   <p>幸福ポイントがマイナスになってしまいますが、それでも購入しますか？</p>
   <form action="Buy" method="POST">
   <input type="submit" value="はい" name="go">

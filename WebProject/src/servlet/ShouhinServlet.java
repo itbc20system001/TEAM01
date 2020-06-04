@@ -34,15 +34,16 @@ public class ShouhinServlet extends HttpServlet {
 		// TODO Auto-generated method stub
 		try {
 			request.setCharacterEncoding("UTF-8");
-
+			//セッション
 			HttpSession session = request.getSession();
 			HappyLife happyLife =(HappyLife)session.getAttribute("happy");
+			//マイナス送り
 			if(happyLife.getHappypoint()<0) {
 				response.sendRedirect("-");
 			}else {
 
 				String shouhin=request.getParameter("商品");
-				System.out.println(shouhin);
+				//商品番号セット
 				if(shouhin!=null) {
 					int selecter = Integer.parseInt(shouhin);
 					happyLife.setProductid(selecter);

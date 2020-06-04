@@ -81,25 +81,28 @@ public class BoughtServlet extends HttpServlet {
 
 		//購入可能なら
 		if(payment.getChange() >= 0) {
+			//時間を設定
+			happy.setOrderDate(LocalDateTime.now());
+			//ハッピー会員なら2日に
+			if(login.getLogin_count() >= 30 && login.getBuy_count() >= 120) {
+				happy.setLimitDate(happy.getOrderDate().plusDays(2));
+			}else {
+				happy.setLimitDate(happy.getOrderDate().plusDays(1));
+			}
+
+
 
 			//ここから購入商品の数だけ繰り返し↓
 			for(int i=0;i<happy.getP_Buy_List().size();i++) {//購入商品リストを回す
 				//注文時間と有効期限の取得
-				happy.setOrderDate(LocalDateTime.now());
-
-				if(login.getLogin_count() >= 30 && login.getBuy_count() >= 120) {
-					happy.setLimitDate(happy.getOrderDate().plusDays(2));
-				}else {
-					happy.setLimitDate(happy.getOrderDate().plusDays(1));
-				}
-
-				happy.setProductid(happy.getP_Buy_List().get(i).getP_id());
-
 				//OrderMainDAOに処理を移して注文書テーブルにINSERT
 				PostOrderMainDAOLogic pomdl = new PostOrderMainDAOLogic();
 
 				pomdl.execute(happy);
 				happy = pomdl.poIdExecute(happy);
+				happy.setPo_id(happy.getPo_id()+i);
+
+				happy.setProductid(happy.getP_Buy_List().get(i).getP_id());
 
 				//OrderDescDAOに処理を移して注文明細テーブルにINSERT
 				PostOrderDescDAOLogic poddl = new PostOrderDescDAOLogic();

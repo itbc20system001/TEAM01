@@ -14,6 +14,7 @@ public class ProductDAO {
 	private final String DB_USER = "root";
 	private final String DB_PASS = "insource.2015it";
 
+	//商品をリストに
 	public ArrayList<Product> loadingProduct() {
 		ArrayList<Product> productList = new ArrayList<>();
 		try {
