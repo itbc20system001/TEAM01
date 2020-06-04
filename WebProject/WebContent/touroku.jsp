@@ -102,7 +102,7 @@ select{
     <div><label>住所（市区町村名）<br> <input type="text" name="city"><br> </label></div>
      <div><label>住所（その他）<br> <input type="text" name="o_address"><br> </label></div>
      <div><label>電話番号<br> <input type="text" name="tel"><br> </label></div>
-     <div><label>Eメールアドレス（登録後ユーザーネームになります）<br> <input type="text" name="email"><br></label></div>
+     <div><label>Eメールアドレス<br> <input type="text" name="email"><br></label></div>
      <div><label> 生年月日
     <!-- <input type="text" name="birthday"> -->
 
